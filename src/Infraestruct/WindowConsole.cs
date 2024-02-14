@@ -1,4 +1,4 @@
-namespace src.Infra
+namespace src.Infraestruct
 {
     public static partial class WindowConsole
     {

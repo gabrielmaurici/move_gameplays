@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using src.Domain.Services;
-using src.Infra;
+using src.Domain.Interfaces;
+using src.Infraestruct;
 using System.Runtime.Versioning;
 
 namespace src.Background

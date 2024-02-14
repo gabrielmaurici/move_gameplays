@@ -1,4 +1,4 @@
-namespace src.Domain.Services
+namespace src.Domain.Interfaces
 {
     public interface IMonitorExternalHdInput
     {
