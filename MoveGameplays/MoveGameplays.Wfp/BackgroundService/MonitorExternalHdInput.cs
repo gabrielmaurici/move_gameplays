@@ -1,18 +1,19 @@
 using MoveGameplays.Domain.Enums;
+using MoveGameplays.Domain.Interfaces;
+using MoveGameplays.Domain.Models;
 using MoveGameplays.Wfp.BackgroundService.Interfaces;
-using src.UseCases.Interfaces;
 using System.Management;
 using System.Runtime.Versioning;
 
 namespace MoveGameplays.Wfp.BackgroundService
 {
     [SupportedOSPlatform("windows")]
-    public class MonitorExternalHdInput(IMoveGameplaysUseCase moveGameplaysUseCase) : IMonitorExternalHdInput, IDisposable
+    public class MonitorExternalHdInput(ICheckExpectedHd checkExpectedHd, MoveGameplaysConfigModel configurations) : IMonitorExternalHdInput, IDisposable
     {
         private readonly ManagementEventWatcher _watcher = new();
-        private readonly IMoveGameplaysUseCase _moveGameplaysUseCase = moveGameplaysUseCase;
+        private readonly ICheckExpectedHd _checkExpectedHd = checkExpectedHd;
         private const string QUERY_VOLUME_CHANGE_EVENT = "SELECT * FROM Win32_VolumeChangeEvent";
-
+        private readonly MoveGameplaysConfigModel _configs = configurations;
 
         public void Monitor()
         {
@@ -27,10 +28,17 @@ namespace MoveGameplays.Wfp.BackgroundService
 
             GetEventTypeAndDiskDrive(e, out EEventType? eventType, out string? diskDrive);
 
-            if (eventType == EEventType.Arrival && !string.IsNullOrEmpty(diskDrive))
+            if (ItsArrivalAndHasDiskDrive(eventType, diskDrive))
             {
-                _moveGameplaysUseCase.Move(diskDrive);
+                var isExpectedHd = _checkExpectedHd.Check(diskDrive!, _configs.ExternalHdName);
+                if (isExpectedHd)
+                    new OptionsAndMoveFilesForm(diskDrive!, _configs).ShowDialog();
             }
+        }
+
+        private static bool ItsArrivalAndHasDiskDrive(EEventType? eventType, string? diskDrive)
+        {
+            return eventType == EEventType.Arrival && !string.IsNullOrEmpty(diskDrive);
         }
 
         private static void GetEventTypeAndDiskDrive(EventArrivedEventArgs e, out EEventType? eventType, out string? diskDrive)

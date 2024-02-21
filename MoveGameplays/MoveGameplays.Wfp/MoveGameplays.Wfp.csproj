@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MoveGameplays.Domain\MoveGameplays.Domain.csproj" />
     <ProjectReference Include="..\MoveGameplays.IoC\MoveGameplays.IoC.csproj" />
     <ProjectReference Include="..\MoveGameplays.UseCases\MoveGameplays.UseCases.csproj" />
   </ItemGroup>

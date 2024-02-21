@@ -1,6 +1,6 @@
 ﻿namespace MoveGameplays.Wfp
 {
-    partial class Form1
+    partial class MonitorHdForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MonitorHdForm));
             notifyIcon1 = new NotifyIcon(components);
             SuspendLayout();
             // 
@@ -43,9 +43,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Desktop;
             ClientSize = new Size(800, 450);
+            FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "MonitorHdForm";
             Load += Form1_Load;
             Resize += Form1_Resize;
             ResumeLayout(false);

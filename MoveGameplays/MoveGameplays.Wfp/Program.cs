@@ -1,5 +1,7 @@
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MoveGameplays.Domain.Models;
 using MoveGameplays.IoC;
 using MoveGameplays.Wfp.BackgroundService;
 using MoveGameplays.Wfp.BackgroundService.Interfaces;
@@ -21,18 +23,30 @@ namespace MoveGameplays.Wfp
             var host = CreateHostBuilder().Build();
             ServiceProvider = host.Services;
 
-            Application.Run(ServiceProvider.GetRequiredService<Form1>());
+            
+
+            Application.Run(ServiceProvider.GetRequiredService<MonitorHdForm>());
         }
         
 
         static IHostBuilder CreateHostBuilder()
         {
             return Host.CreateDefaultBuilder()
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var directory = "E:\\dev\\Projetos\\move_gameplays\\MoveGameplays\\MoveGameplays.Wfp";
+                    config.SetBasePath(directory);
+                    config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                })
                 .ConfigureServices((context, services) => {
+                    var moveGameplaysConfig = context.Configuration.GetSection("MoveGameplaysConfig")
+                                                                   .Get<MoveGameplaysConfigModel>()!;
+                    services.AddSingleton(moveGameplaysConfig);
                     services.AddInfraDependeces();
                     services.AddUseCasesDependeces();
                     services.AddScoped<IMonitorExternalHdInput, MonitorExternalHdInput>();
-                    services.AddTransient<Form1>();
+                    services.AddTransient<MonitorHdForm>();
+
                 });
         }
     }
