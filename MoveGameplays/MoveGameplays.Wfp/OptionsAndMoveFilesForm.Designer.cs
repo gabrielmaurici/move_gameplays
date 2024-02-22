@@ -40,7 +40,7 @@
             // 
             btn_last_gameplay.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_last_gameplay.ForeColor = SystemColors.WindowFrame;
-            btn_last_gameplay.Location = new Point(12, 39);
+            btn_last_gameplay.Location = new Point(12, 89);
             btn_last_gameplay.Name = "btn_last_gameplay";
             btn_last_gameplay.Size = new Size(204, 58);
             btn_last_gameplay.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             btn_last_10_gameplays.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_last_10_gameplays.ForeColor = SystemColors.WindowFrame;
-            btn_last_10_gameplays.Location = new Point(293, 39);
+            btn_last_10_gameplays.Location = new Point(293, 89);
             btn_last_10_gameplays.Name = "btn_last_10_gameplays";
             btn_last_10_gameplays.Size = new Size(204, 58);
             btn_last_10_gameplays.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             button2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = SystemColors.WindowFrame;
-            button2.Location = new Point(584, 39);
+            button2.Location = new Point(584, 89);
             button2.Name = "button2";
             button2.Size = new Size(204, 58);
             button2.TabIndex = 2;
