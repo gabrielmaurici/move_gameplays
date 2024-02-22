@@ -2,23 +2,17 @@ namespace MoveGameplays.Infraestruct
 {
     public class MoveLastMp4File : MoveFilesBase
     {
-        protected override void MoveTypeFileImplement(string moveFromFolder, string moveToFolder)
+        protected override async Task MoveTypeFileImplement(string moveFromFolder, string moveToFolder)
         {
             try
             {
-                Console.WriteLine("Movendo a última gameplay");
-
                 FileInfo? lastMp4File = GetLastMp4File(moveFromFolder);
 
                 if (lastMp4File == null) return;
 
-                Console.WriteLine($"Movendo gameplay: {lastMp4File.Name}");
-
-                string moveToFolderCombine = Path.Combine(moveToFolder, lastMp4File.Name);
-
-                File.Copy(lastMp4File.FullName, moveToFolderCombine);
-
-                Console.WriteLine("Última gameplay movida com sucesso!");
+                await MoveFileAsync(moveFromFolder: lastMp4File.FullName,
+                                    moveToFolder: moveToFolder,
+                                    fileName: lastMp4File.Name);
             }
             catch (Exception ex)
             {

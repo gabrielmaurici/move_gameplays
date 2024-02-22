@@ -32,6 +32,8 @@
             btn_last_gameplay = new Button();
             btn_last_10_gameplays = new Button();
             button2 = new Button();
+            lb_progress_move_gameplays = new Label();
+            progressBar_gameplays = new ProgressBar();
             SuspendLayout();
             // 
             // btn_last_gameplay
@@ -68,16 +70,38 @@
             button2.Text = "Mover última gameplay";
             button2.UseVisualStyleBackColor = true;
             // 
+            // lb_progress_move_gameplays
+            // 
+            lb_progress_move_gameplays.Font = new Font("Sans Serif Collection", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_progress_move_gameplays.ForeColor = SystemColors.ButtonFace;
+            lb_progress_move_gameplays.Location = new Point(12, 150);
+            lb_progress_move_gameplays.Name = "lb_progress_move_gameplays";
+            lb_progress_move_gameplays.Size = new Size(776, 170);
+            lb_progress_move_gameplays.TabIndex = 3;
+            lb_progress_move_gameplays.Text = "Escolha uma opção a cima";
+            lb_progress_move_gameplays.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // progressBar_gameplays
+            // 
+            progressBar_gameplays.BackColor = SystemColors.Desktop;
+            progressBar_gameplays.Cursor = Cursors.AppStarting;
+            progressBar_gameplays.Location = new Point(50, 310);
+            progressBar_gameplays.Name = "progressBar_gameplays";
+            progressBar_gameplays.Size = new Size(684, 39);
+            progressBar_gameplays.TabIndex = 4;
+            progressBar_gameplays.Visible = false;
+            // 
             // OptionsAndMoveFilesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
             ClientSize = new Size(800, 450);
+            Controls.Add(progressBar_gameplays);
+            Controls.Add(lb_progress_move_gameplays);
             Controls.Add(button2);
             Controls.Add(btn_last_10_gameplays);
             Controls.Add(btn_last_gameplay);
-            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "OptionsAndMoveFilesForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -91,5 +115,7 @@
         private Button btn_last_gameplay;
         private Button btn_last_10_gameplays;
         private Button button2;
+        private Label lb_progress_move_gameplays;
+        private ProgressBar progressBar_gameplays;
     }
 }

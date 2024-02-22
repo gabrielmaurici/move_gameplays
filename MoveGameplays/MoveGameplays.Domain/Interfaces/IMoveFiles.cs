@@ -2,6 +2,6 @@ namespace MoveGameplays.Domain.Interfaces
 {
     public interface IMoveFiles
     {
-        void Move(string moveFromFolder, string moveToFolder);
+        Task Move(string moveFromFolder, string moveToFolder);
     }
 }

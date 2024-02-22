@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MonitorHdForm));
             notifyIcon1 = new NotifyIcon(components);
+            label1 = new Label();
             SuspendLayout();
             // 
             // notifyIcon1
@@ -38,25 +39,43 @@
             notifyIcon1.Icon = (Icon)resources.GetObject("notifyIcon1.Icon");
             notifyIcon1.Text = "notifyIcon1";
             notifyIcon1.Visible = true;
+            notifyIcon1.MouseDoubleClick += notifyIcon1_MouseDoubleClick;
             // 
-            // Form1
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.Desktop;
+            label1.Font = new Font("Sans Serif Collection", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.Window;
+            label1.Location = new Point(48, 195);
+            label1.Name = "label1";
+            label1.Size = new Size(692, 52);
+            label1.TabIndex = 0;
+            label1.Text = "Aguardando HD esperado ser conectado";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // MonitorHdForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Form1";
+            Name = "MonitorHdForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MonitorHdForm";
+            FormClosed += MonitorHdForm_FormClosed;
             Load += Form1_Load;
             Resize += Form1_Resize;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private NotifyIcon notifyIcon1;
+        private Label label1;
     }
 }

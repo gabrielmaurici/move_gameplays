@@ -1,5 +1,7 @@
+using MoveGameplays.Domain.Dtos;
 using MoveGameplays.Domain.Enums;
 using MoveGameplays.Domain.Interfaces;
+using MoveGameplays.Domain.Interfaces.Observer;
 using MoveGameplays.Domain.Models;
 using MoveGameplays.Wfp.BackgroundService.Interfaces;
 using System.Management;
@@ -14,6 +16,21 @@ namespace MoveGameplays.Wfp.BackgroundService
         private readonly ICheckExpectedHd _checkExpectedHd = checkExpectedHd;
         private const string QUERY_VOLUME_CHANGE_EVENT = "SELECT * FROM Win32_VolumeChangeEvent";
         private readonly MoveGameplaysConfigModel _configs = configurations;
+        private List<IObserverContract<ExpectedHdConnectedDto>> _observers = [];
+
+        public void Subscribe(IObserverContract<ExpectedHdConnectedDto> observer)
+            => _observers.Add(observer);
+
+        public void Unsubscribe(IObserverContract<ExpectedHdConnectedDto> observer)
+            => _observers.Remove(observer);
+
+        public void NotifiesSubscribers(ExpectedHdConnectedDto notification)
+        {
+            foreach (var observer in _observers)
+            {
+                observer.Notify(notification);
+            }
+        }
 
         public void Monitor()
         {
@@ -32,7 +49,10 @@ namespace MoveGameplays.Wfp.BackgroundService
             {
                 var isExpectedHd = _checkExpectedHd.Check(diskDrive!, _configs.ExternalHdName);
                 if (isExpectedHd)
-                    new OptionsAndMoveFilesForm(diskDrive!, _configs).ShowDialog();
+                {
+                    var expectedHd = new ExpectedHdConnectedDto(diskDrive!, _configs);
+                    NotifiesSubscribers(expectedHd);
+                }
             }
         }
 
