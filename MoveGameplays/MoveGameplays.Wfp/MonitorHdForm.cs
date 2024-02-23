@@ -20,22 +20,13 @@ namespace MoveGameplays.Wfp
             _monitorExternalHdInput.Subscribe(this);
             _monitorExternalHdInput.Monitor();
 
-            Timer timer = new()
-            {
-                Interval = 5000
-            };
-
-            timer.Tick += (s, args) =>
-            {
-                timer.Stop();
-                Hide();
-            };
-            timer.Start();
+            HideFormAfter5Seconds();
         }
 
         public void Notify(ExpectedHdConnectedDto notification)
         {
             new OptionsAndMoveFilesForm(notification.diskDrive, notification.moveGameplaysConfig).ShowDialog();
+            HideFormAfter5Seconds();
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -51,9 +42,24 @@ namespace MoveGameplays.Wfp
             _monitorExternalHdInput.Unsubscribe(this);
         }
 
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Show();
+        }
+
+        private void HideFormAfter5Seconds()
+        {
+            Timer timer = new()
+            {
+                Interval = 5000
+            };
+
+            timer.Tick += (s, args) =>
+            {
+                timer.Stop();
+                Hide();
+            };
+            timer.Start();
         }
     }
 }

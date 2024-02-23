@@ -16,7 +16,7 @@ namespace MoveGameplays.Infraestruct
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao mover a última gameplay para o PC: {ex.Message}");
+                throw new Exception($"Erro ao mover a última gameplay para o PC: {ex.Message}");
             }
         }
 

@@ -6,22 +6,27 @@ namespace MoveGameplays.Infraestruct
 		{
 			try
 			{
-				Console.WriteLine("Movendo as últimas 10 gameplays");
-
 				FileInfo[]? last10Mp4Files = GetLast10Mp4File(moveFromFolder);
 
 				if (last10Mp4Files == null) return;
 
+				var totalFiles = last10Mp4Files.Length;
+				var count = 1;
+
 				foreach (var file in last10Mp4Files)
 				{
+					var numberOfFiles = $"{count}/{totalFiles}";
+
 					await MoveFileAsync(moveFromFolder: file.FullName,
 										moveToFolder: moveToFolder,
-										fileName: file.Name);
+										fileName: file.Name,
+										numberOfFiles: numberOfFiles);
+					count++;
 				}
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine($"Erro ao mover as últimas 10 gameplays para o PC: {ex.Message}");
+				throw new Exception($"Erro ao mover as últimas 10 gameplays para o PC: {ex.Message}");
 			}
 		}
 

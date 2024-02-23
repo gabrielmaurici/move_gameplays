@@ -1,4 +1,5 @@
 using MoveGameplays.Domain.Dtos;
+using MoveGameplays.Domain.Enums;
 using MoveGameplays.Domain.Interfaces;
 using MoveGameplays.Domain.Interfaces.Observer;
 
@@ -29,7 +30,7 @@ namespace MoveGameplays.Infraestruct
             await MoveTypeFileImplement(moveFromFolder, moveToFolder);
         }
 
-        public async Task MoveFileAsync(string moveFromFolder, string moveToFolder, string fileName)
+        public async Task MoveFileAsync(string moveFromFolder, string moveToFolder, string fileName, string numberOfFiles = "1/1")
         {
             const int bufferSize = 4096;
             byte[] buffer = new byte[bufferSize];
@@ -41,9 +42,14 @@ namespace MoveGameplays.Infraestruct
 
             long totalBytes = sourceStream.Length;
 
-            int progressAnterior = 0;
+            short previousProgress = 0;
 
-            var progressGameplay = new ProgressGameplayDto();
+            var progressGameplay = new ProgressGameplayDto()
+            {
+                FileName = fileName,
+                FileType = EFileType.Mp4,
+                NumberOfFiles = numberOfFiles,
+            };
 
             while ((bytesRead = await sourceStream.ReadAsync(buffer)) > 0)
             {
@@ -53,18 +59,16 @@ namespace MoveGameplays.Infraestruct
 
                 // Notificar progresso (exemplo: em percentagem)
                 short progressPercentage = (short)((double)totalBytesRead / totalBytes * 100);
-                if (progressPercentage > progressAnterior)
+                if (progressPercentage > previousProgress)
                 {
-                    progressGameplay.GameplayFileName = fileName;
                     progressGameplay.PercentageOfProgress = progressPercentage;
                     NotifiesSubscribers(progressGameplay);
-
-                    progressAnterior = progressPercentage;
+                    previousProgress = progressPercentage;
                 }
             }
         }
 
-        private static void MoveAllImages(string moveFromFolder, string moveToFolder)
+        private void MoveAllImages(string moveFromFolder, string moveToFolder)
         {
             try
             {
@@ -78,20 +82,30 @@ namespace MoveGameplays.Infraestruct
 
                 var moveToFolderImages = moveToFolder + "\\images";
 
+                var progressGameplay = new ProgressGameplayDto()
+                {
+                    FileType = EFileType.Png,
+                    PercentageOfProgress = 0
+                };
+
+                var totalFiles = files.Length;
+                var count = 1;
+
                 foreach (var file in files)
                 {
-                    Console.WriteLine($"Movendo imagem: {file.Name}");
-
                     string moveToFolderCombine = Path.Combine(moveToFolderImages, file.Name);
 
-                    File.Copy(file.FullName, moveToFolderCombine);
-                }
+                    progressGameplay.FileName = file.Name;
+                    progressGameplay.NumberOfFiles = $"{count}/{totalFiles}";
 
-                Console.WriteLine("Todas as imagens foram movidas com sucesso!");
+                    NotifiesSubscribers(progressGameplay);
+
+                    count++;
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                throw new Exception($"Erro ao mover as imagens: {ex.Message}");
             }
         }
 

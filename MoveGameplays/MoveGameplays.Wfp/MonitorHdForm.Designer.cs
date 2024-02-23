@@ -39,17 +39,16 @@
             notifyIcon1.Icon = (Icon)resources.GetObject("notifyIcon1.Icon");
             notifyIcon1.Text = "notifyIcon1";
             notifyIcon1.Visible = true;
-            notifyIcon1.MouseDoubleClick += notifyIcon1_MouseDoubleClick;
+            notifyIcon1.MouseDoubleClick += NotifyIcon1_MouseDoubleClick;
             // 
             // label1
             // 
-            label1.AutoSize = true;
             label1.BackColor = SystemColors.Desktop;
             label1.Font = new Font("Sans Serif Collection", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.Window;
-            label1.Location = new Point(48, 195);
+            label1.Location = new Point(2, 134);
             label1.Name = "label1";
-            label1.Size = new Size(692, 52);
+            label1.Size = new Size(796, 50);
             label1.TabIndex = 0;
             label1.Text = "Aguardando HD esperado ser conectado";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -59,7 +58,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 320);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -70,7 +69,6 @@
             Load += Form1_Load;
             Resize += Form1_Resize;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
