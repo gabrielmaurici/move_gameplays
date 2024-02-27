@@ -3,7 +3,7 @@ using MoveGameplays.Domain.Interfaces.Observer;
 using MoveGameplays.Wfp.BackgroundService.Interfaces;
 using Timer = System.Windows.Forms.Timer;
 
-namespace MoveGameplays.Wfp
+namespace MoveGameplays.Wfp.Views
 {
     public partial class MonitorHdForm : Form, IObserverContract<ExpectedHdConnectedDto>
     {

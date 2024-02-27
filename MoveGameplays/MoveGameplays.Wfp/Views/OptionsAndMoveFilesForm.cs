@@ -4,7 +4,7 @@ using MoveGameplays.Domain.Interfaces.Observer;
 using MoveGameplays.Domain.Models;
 using MoveGameplays.Infraestruct;
 
-namespace MoveGameplays.Wfp
+namespace MoveGameplays.Wfp.Views
 {
     public partial class OptionsAndMoveFilesForm : Form, IObserverContract<ProgressGameplayDto>
     {

@@ -1,4 +1,4 @@
-﻿namespace MoveGameplays.Wfp
+﻿namespace MoveGameplays.Wfp.Views
 {
     partial class MonitorHdForm
     {

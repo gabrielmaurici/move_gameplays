@@ -5,6 +5,7 @@ using MoveGameplays.Domain.Models;
 using MoveGameplays.IoC;
 using MoveGameplays.Wfp.BackgroundService;
 using MoveGameplays.Wfp.BackgroundService.Interfaces;
+using MoveGameplays.Wfp.Views;
 
 namespace MoveGameplays.Wfp
 {
@@ -22,8 +23,6 @@ namespace MoveGameplays.Wfp
 
             var host = CreateHostBuilder().Build();
             ServiceProvider = host.Services;
-
-            
 
             Application.Run(ServiceProvider.GetRequiredService<MonitorHdForm>());
         }
@@ -43,10 +42,8 @@ namespace MoveGameplays.Wfp
                                                                    .Get<MoveGameplaysConfigModel>()!;
                     services.AddSingleton(moveGameplaysConfig);
                     services.AddInfraDependeces();
-                    services.AddUseCasesDependeces();
                     services.AddScoped<IMonitorExternalHdInput, MonitorExternalHdInput>();
                     services.AddTransient<MonitorHdForm>();
-
                 });
         }
     }

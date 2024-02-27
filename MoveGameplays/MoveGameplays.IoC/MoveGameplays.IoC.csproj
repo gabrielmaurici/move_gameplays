@@ -13,7 +13,6 @@
   <ItemGroup>
     <ProjectReference Include="..\MoveGameplays.Domain\MoveGameplays.Domain.csproj" />
     <ProjectReference Include="..\MoveGameplays.Infraestruct\MoveGameplays.Infraestruct.csproj" />
-    <ProjectReference Include="..\MoveGameplays.UseCases\MoveGameplays.UseCases.csproj" />
   </ItemGroup>
 
 </Project>
