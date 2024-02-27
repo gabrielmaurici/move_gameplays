@@ -32,6 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MonitorHdForm));
             notifyIcon1 = new NotifyIcon(components);
             label1 = new Label();
+            panel1 = new Panel();
+            btn_minimize = new Button();
+            btn_close = new Button();
+            lb_move_gameplays = new Label();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // notifyIcon1
@@ -43,7 +48,7 @@
             // 
             // label1
             // 
-            label1.BackColor = SystemColors.Desktop;
+            label1.BackColor = Color.FromArgb(5, 5, 5);
             label1.Font = new Font("Sans Serif Collection", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.Window;
             label1.Location = new Point(2, 134);
@@ -53,12 +58,57 @@
             label1.Text = "Aguardando HD esperado ser conectado";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Black;
+            panel1.Controls.Add(btn_minimize);
+            panel1.Controls.Add(btn_close);
+            panel1.Controls.Add(lb_move_gameplays);
+            panel1.Location = new Point(2, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(796, 33);
+            panel1.TabIndex = 1;
+            // 
+            // btn_minimize
+            // 
+            btn_minimize.BackgroundImage = (Image)resources.GetObject("btn_minimize.BackgroundImage");
+            btn_minimize.FlatStyle = FlatStyle.Flat;
+            btn_minimize.Location = new Point(736, 5);
+            btn_minimize.Name = "btn_minimize";
+            btn_minimize.Size = new Size(22, 22);
+            btn_minimize.TabIndex = 2;
+            btn_minimize.UseVisualStyleBackColor = true;
+            btn_minimize.Click += Btn_minimize_Click;
+            // 
+            // btn_close
+            // 
+            btn_close.BackgroundImage = (Image)resources.GetObject("btn_close.BackgroundImage");
+            btn_close.FlatStyle = FlatStyle.Flat;
+            btn_close.Location = new Point(764, 5);
+            btn_close.Name = "btn_close";
+            btn_close.Size = new Size(22, 22);
+            btn_close.TabIndex = 1;
+            btn_close.UseVisualStyleBackColor = true;
+            btn_close.Click += Btn_close_Click;
+            // 
+            // lb_move_gameplays
+            // 
+            lb_move_gameplays.AutoSize = true;
+            lb_move_gameplays.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_move_gameplays.ForeColor = SystemColors.ButtonFace;
+            lb_move_gameplays.Location = new Point(10, 9);
+            lb_move_gameplays.Name = "lb_move_gameplays";
+            lb_move_gameplays.Size = new Size(99, 15);
+            lb_move_gameplays.TabIndex = 0;
+            lb_move_gameplays.Text = "MoveGameplays";
+            // 
             // MonitorHdForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Desktop;
+            BackColor = Color.FromArgb(5, 5, 5);
             ClientSize = new Size(800, 320);
+            Controls.Add(panel1);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -68,6 +118,8 @@
             FormClosed += MonitorHdForm_FormClosed;
             Load += Form1_Load;
             Resize += Form1_Resize;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -75,5 +127,9 @@
 
         private NotifyIcon notifyIcon1;
         private Label label1;
+        private Panel panel1;
+        private Button btn_close;
+        private Label lb_move_gameplays;
+        private Button btn_minimize;
     }
 }

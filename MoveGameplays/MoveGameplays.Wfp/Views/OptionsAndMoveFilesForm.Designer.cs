@@ -36,13 +36,18 @@
             progressBar_gameplays = new ProgressBar();
             lb_png_gameplays = new Label();
             lb_mp4_gameplays = new Label();
+            lb_move_gameplays = new Label();
+            panel1 = new Panel();
+            btn_minimize = new Button();
+            btn_close = new Button();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btn_last_gameplay
             // 
             btn_last_gameplay.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_last_gameplay.ForeColor = SystemColors.WindowFrame;
-            btn_last_gameplay.Location = new Point(12, 35);
+            btn_last_gameplay.Location = new Point(14, 59);
             btn_last_gameplay.Name = "btn_last_gameplay";
             btn_last_gameplay.Size = new Size(204, 58);
             btn_last_gameplay.TabIndex = 0;
@@ -54,7 +59,7 @@
             // 
             btn_last_10_gameplays.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_last_10_gameplays.ForeColor = SystemColors.WindowFrame;
-            btn_last_10_gameplays.Location = new Point(293, 35);
+            btn_last_10_gameplays.Location = new Point(304, 59);
             btn_last_10_gameplays.Name = "btn_last_10_gameplays";
             btn_last_10_gameplays.Size = new Size(204, 58);
             btn_last_10_gameplays.TabIndex = 1;
@@ -66,7 +71,7 @@
             // 
             button2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = SystemColors.WindowFrame;
-            button2.Location = new Point(584, 35);
+            button2.Location = new Point(584, 59);
             button2.Name = "button2";
             button2.Size = new Size(204, 58);
             button2.TabIndex = 2;
@@ -118,12 +123,57 @@
             lb_mp4_gameplays.TextAlign = ContentAlignment.MiddleCenter;
             lb_mp4_gameplays.Visible = false;
             // 
+            // lb_move_gameplays
+            // 
+            lb_move_gameplays.AutoSize = true;
+            lb_move_gameplays.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_move_gameplays.ForeColor = SystemColors.ButtonFace;
+            lb_move_gameplays.Location = new Point(10, 9);
+            lb_move_gameplays.Name = "lb_move_gameplays";
+            lb_move_gameplays.Size = new Size(99, 15);
+            lb_move_gameplays.TabIndex = 0;
+            lb_move_gameplays.Text = "MoveGameplays";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Black;
+            panel1.Controls.Add(btn_minimize);
+            panel1.Controls.Add(btn_close);
+            panel1.Controls.Add(lb_move_gameplays);
+            panel1.Location = new Point(4, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(796, 33);
+            panel1.TabIndex = 7;
+            // 
+            // btn_minimize
+            // 
+            btn_minimize.BackgroundImage = (Image)resources.GetObject("btn_minimize.BackgroundImage");
+            btn_minimize.FlatStyle = FlatStyle.Flat;
+            btn_minimize.Location = new Point(736, 5);
+            btn_minimize.Name = "btn_minimize";
+            btn_minimize.Size = new Size(22, 22);
+            btn_minimize.TabIndex = 2;
+            btn_minimize.UseVisualStyleBackColor = true;
+            btn_minimize.Click += Btn_minimize_Click;
+            // 
+            // btn_close
+            // 
+            btn_close.BackgroundImage = (Image)resources.GetObject("btn_close.BackgroundImage");
+            btn_close.FlatStyle = FlatStyle.Flat;
+            btn_close.Location = new Point(764, 5);
+            btn_close.Name = "btn_close";
+            btn_close.Size = new Size(22, 22);
+            btn_close.TabIndex = 1;
+            btn_close.UseVisualStyleBackColor = true;
+            btn_close.Click += Btn_close_Click;
+            // 
             // OptionsAndMoveFilesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Desktop;
+            BackColor = Color.FromArgb(5, 5, 5);
             ClientSize = new Size(800, 320);
+            Controls.Add(panel1);
             Controls.Add(lb_mp4_gameplays);
             Controls.Add(lb_png_gameplays);
             Controls.Add(progressBar_gameplays);
@@ -138,6 +188,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OptionsAndMoveFilesForm";
             Load += OptionsAndMoveFilesForm_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -150,5 +202,9 @@
         private ProgressBar progressBar_gameplays;
         private Label lb_png_gameplays;
         private Label lb_mp4_gameplays;
+        private Label lb_move_gameplays;
+        private Panel panel1;
+        private Button btn_minimize;
+        private Button btn_close;
     }
 }

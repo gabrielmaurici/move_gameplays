@@ -3,17 +3,32 @@ using MoveGameplays.Domain.Enums;
 using MoveGameplays.Domain.Interfaces.Observer;
 using MoveGameplays.Domain.Models;
 using MoveGameplays.Infraestruct;
+using System.Runtime.InteropServices;
 
 namespace MoveGameplays.Wfp.Views
 {
     public partial class OptionsAndMoveFilesForm : Form, IObserverContract<ProgressGameplayDto>
     {
+        [LibraryImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static partial IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // width of ellipse
+            int nHeightEllipse // height of ellipse
+        );
+
         private readonly MoveGameplaysConfigModel _configs;
         private readonly string _diskDrive;
 
         public OptionsAndMoveFilesForm(string diskDrive, MoveGameplaysConfigModel configs)
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.None;
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+
             _configs = configs;
             _diskDrive = diskDrive;
         }
@@ -27,7 +42,7 @@ namespace MoveGameplays.Wfp.Views
         {
             try
             {
-                switch(notification.FileType)
+                switch (notification.FileType)
                 {
                     case EFileType.Png:
                         lb_png_gameplays.Text = $"Movendo imagens: {notification.FileName} - {notification.NumberOfFiles}";
@@ -38,7 +53,7 @@ namespace MoveGameplays.Wfp.Views
                         lb_mp4_gameplays.Text = $"Movendo gameplays: {notification.FileName} - {notification.NumberOfFiles}";
                         progressBar_gameplays.Visible = true;
                         progressBar_gameplays.Value = notification.PercentageOfProgress;
-                    break;
+                        break;
                 }
             }
             catch (Exception ex)
@@ -73,6 +88,17 @@ namespace MoveGameplays.Wfp.Views
 
             MessageBox.Show("Todas as imagens e gameplays foram movidas com sucesso!");
             Close();
+        }
+
+        private void Btn_close_Click(object sender, EventArgs e)
+        {
+            Hide();
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void Btn_minimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

@@ -1,17 +1,31 @@
 using MoveGameplays.Domain.Dtos;
 using MoveGameplays.Domain.Interfaces.Observer;
 using MoveGameplays.Wfp.BackgroundService.Interfaces;
+using System.Runtime.InteropServices;
 using Timer = System.Windows.Forms.Timer;
 
 namespace MoveGameplays.Wfp.Views
 {
     public partial class MonitorHdForm : Form, IObserverContract<ExpectedHdConnectedDto>
     {
+        [LibraryImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static partial IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // width of ellipse
+            int nHeightEllipse // height of ellipse
+        );
+
         private readonly IMonitorExternalHdInput _monitorExternalHdInput;
 
         public MonitorHdForm(IMonitorExternalHdInput monitorExternalHdInput)
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.None;
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             _monitorExternalHdInput = monitorExternalHdInput;
         }
 
@@ -20,7 +34,7 @@ namespace MoveGameplays.Wfp.Views
             _monitorExternalHdInput.Subscribe(this);
             _monitorExternalHdInput.Monitor();
 
-            HideFormAfter5Seconds();
+            //HideFormAfter5Seconds();
         }
 
         public void Notify(ExpectedHdConnectedDto notification)
@@ -33,18 +47,19 @@ namespace MoveGameplays.Wfp.Views
         {
             if (WindowState == FormWindowState.Minimized)
             {
-                Hide();
+                //Hide();
             }
         }
 
         private void MonitorHdForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _monitorExternalHdInput.Unsubscribe(this);
+            //_monitorExternalHdInput.Unsubscribe(this);
         }
 
         private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Show();
+            WindowState = FormWindowState.Normal;
         }
 
         private void HideFormAfter5Seconds()
@@ -60,6 +75,17 @@ namespace MoveGameplays.Wfp.Views
                 Hide();
             };
             timer.Start();
+        }
+
+        private void Btn_close_Click(object sender, EventArgs e)
+        {
+            Hide();
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void Btn_minimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }
