@@ -33,14 +33,9 @@ namespace MoveGameplays.Wfp.Views
             _diskDrive = diskDrive;
         }
 
-        private void OptionsAndMoveFilesForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         public void Notify(ProgressGameplayDto notification)
         {
-            try
+            if (notification.Success)
             {
                 switch (notification.FileType)
                 {
@@ -55,21 +50,19 @@ namespace MoveGameplays.Wfp.Views
                         progressBar_gameplays.Value = notification.PercentageOfProgress;
                         break;
                 }
-            }
-            catch (Exception ex)
+            } else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(notification.MessageError);
             }
         }
 
-        private async void Btn_last_gameplay_Click(object sender, EventArgs e)
+        private async void Btn_move_last_gameplay_Click(object sender, EventArgs e)
         {
             var moveFiles = new MoveLastMp4File();
             await MoveGameplays(moveFiles);
         }
 
-
-        private async void Btn_last_10_gameplays_Click(object sender, EventArgs e)
+        private async void Btn_move_last_10_gameplays_Click(object sender, EventArgs e)
         {
             var moveFiles = new MoveLast10Mp4Files();
             await MoveGameplays(moveFiles);

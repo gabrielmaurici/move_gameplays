@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptionsAndMoveFilesForm));
-            btn_last_gameplay = new Button();
-            btn_last_10_gameplays = new Button();
-            button2 = new Button();
             lb_progress_move_gameplays = new Label();
             progressBar_gameplays = new ProgressBar();
             lb_png_gameplays = new Label();
@@ -40,43 +37,10 @@
             panel1 = new Panel();
             btn_minimize = new Button();
             btn_close = new Button();
+            btn_move_last_gameplay = new UIExtensions.CustomButton();
+            btn_move_last_10_gameplays = new UIExtensions.CustomButton();
             panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // btn_last_gameplay
-            // 
-            btn_last_gameplay.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_last_gameplay.ForeColor = SystemColors.WindowFrame;
-            btn_last_gameplay.Location = new Point(14, 59);
-            btn_last_gameplay.Name = "btn_last_gameplay";
-            btn_last_gameplay.Size = new Size(204, 58);
-            btn_last_gameplay.TabIndex = 0;
-            btn_last_gameplay.Text = "Mover última gameplay";
-            btn_last_gameplay.UseVisualStyleBackColor = true;
-            btn_last_gameplay.Click += Btn_last_gameplay_Click;
-            // 
-            // btn_last_10_gameplays
-            // 
-            btn_last_10_gameplays.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_last_10_gameplays.ForeColor = SystemColors.WindowFrame;
-            btn_last_10_gameplays.Location = new Point(304, 59);
-            btn_last_10_gameplays.Name = "btn_last_10_gameplays";
-            btn_last_10_gameplays.Size = new Size(204, 58);
-            btn_last_10_gameplays.TabIndex = 1;
-            btn_last_10_gameplays.Text = "Mover as 10 últimas gameplays";
-            btn_last_10_gameplays.UseVisualStyleBackColor = true;
-            btn_last_10_gameplays.Click += Btn_last_10_gameplays_Click;
-            // 
-            // button2
-            // 
-            button2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = SystemColors.WindowFrame;
-            button2.Location = new Point(584, 59);
-            button2.Name = "button2";
-            button2.Size = new Size(204, 58);
-            button2.TabIndex = 2;
-            button2.Text = "Mover última gameplay";
-            button2.UseVisualStyleBackColor = true;
             // 
             // lb_progress_move_gameplays
             // 
@@ -167,37 +131,69 @@
             btn_close.UseVisualStyleBackColor = true;
             btn_close.Click += Btn_close_Click;
             // 
+            // btn_move_last_gameplay
+            // 
+            btn_move_last_gameplay.BackColor = Color.FromArgb(75, 75, 75);
+            btn_move_last_gameplay.BackgroundColor = Color.FromArgb(75, 75, 75);
+            btn_move_last_gameplay.BorderColor = Color.PaleVioletRed;
+            btn_move_last_gameplay.BorderRadius = 10;
+            btn_move_last_gameplay.BorderSize = 0;
+            btn_move_last_gameplay.FlatAppearance.BorderSize = 0;
+            btn_move_last_gameplay.FlatStyle = FlatStyle.Flat;
+            btn_move_last_gameplay.ForeColor = Color.White;
+            btn_move_last_gameplay.Location = new Point(61, 69);
+            btn_move_last_gameplay.Name = "btn_move_last_gameplay";
+            btn_move_last_gameplay.Size = new Size(329, 48);
+            btn_move_last_gameplay.TabIndex = 8;
+            btn_move_last_gameplay.Text = "Mover última Gameplay";
+            btn_move_last_gameplay.TextColor = Color.White;
+            btn_move_last_gameplay.UseVisualStyleBackColor = false;
+            btn_move_last_gameplay.Click += Btn_move_last_gameplay_Click;
+            // 
+            // btn_move_last_10_gameplays
+            // 
+            btn_move_last_10_gameplays.BackColor = Color.FromArgb(75, 75, 75);
+            btn_move_last_10_gameplays.BackgroundColor = Color.FromArgb(75, 75, 75);
+            btn_move_last_10_gameplays.BorderColor = Color.PaleVioletRed;
+            btn_move_last_10_gameplays.BorderRadius = 10;
+            btn_move_last_10_gameplays.BorderSize = 0;
+            btn_move_last_10_gameplays.FlatAppearance.BorderSize = 0;
+            btn_move_last_10_gameplays.FlatStyle = FlatStyle.Flat;
+            btn_move_last_10_gameplays.ForeColor = Color.White;
+            btn_move_last_10_gameplays.Location = new Point(416, 69);
+            btn_move_last_10_gameplays.Name = "btn_move_last_10_gameplays";
+            btn_move_last_10_gameplays.Size = new Size(329, 48);
+            btn_move_last_10_gameplays.TabIndex = 9;
+            btn_move_last_10_gameplays.Text = "Mover últimas 10 Gameplays";
+            btn_move_last_10_gameplays.TextColor = Color.White;
+            btn_move_last_10_gameplays.UseVisualStyleBackColor = false;
+            btn_move_last_10_gameplays.Click += Btn_move_last_10_gameplays_Click;
+            // 
             // OptionsAndMoveFilesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(5, 5, 5);
             ClientSize = new Size(800, 320);
+            Controls.Add(btn_move_last_10_gameplays);
+            Controls.Add(btn_move_last_gameplay);
             Controls.Add(panel1);
             Controls.Add(lb_mp4_gameplays);
             Controls.Add(lb_png_gameplays);
             Controls.Add(progressBar_gameplays);
             Controls.Add(lb_progress_move_gameplays);
-            Controls.Add(button2);
-            Controls.Add(btn_last_10_gameplays);
-            Controls.Add(btn_last_gameplay);
             ForeColor = SystemColors.Desktop;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "OptionsAndMoveFilesForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OptionsAndMoveFilesForm";
-            Load += OptionsAndMoveFilesForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button btn_last_gameplay;
-        private Button btn_last_10_gameplays;
-        private Button button2;
         private Label lb_progress_move_gameplays;
         private ProgressBar progressBar_gameplays;
         private Label lb_png_gameplays;
@@ -206,5 +202,7 @@
         private Panel panel1;
         private Button btn_minimize;
         private Button btn_close;
+        private UIExtensions.CustomButton btn_move_last_gameplay;
+        private UIExtensions.CustomButton btn_move_last_10_gameplays;
     }
 }

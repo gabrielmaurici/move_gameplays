@@ -1,3 +1,5 @@
+using MoveGameplays.Domain.Dtos;
+
 namespace MoveGameplays.Infraestruct
 {
 	public class MoveLast10Mp4Files : MoveFilesBase
@@ -26,7 +28,7 @@ namespace MoveGameplays.Infraestruct
 			}
 			catch (Exception ex)
 			{
-				throw new Exception($"Erro ao mover as últimas 10 gameplays para o PC: {ex.Message}");
+				NotifyError($"Erro ao mover as últimas 10 gameplays: {ex.Message}");
 			}
 		}
 

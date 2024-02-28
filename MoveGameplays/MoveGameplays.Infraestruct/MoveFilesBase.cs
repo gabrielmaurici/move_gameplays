@@ -46,6 +46,7 @@ namespace MoveGameplays.Infraestruct
 
             var progressGameplay = new ProgressGameplayDto()
             {
+                Success = true,
                 FileName = fileName,
                 FileType = EFileType.Mp4,
                 NumberOfFiles = numberOfFiles,
@@ -105,8 +106,19 @@ namespace MoveGameplays.Infraestruct
             }
             catch (Exception ex)
             {
-                throw new Exception($"Erro ao mover as imagens: {ex.Message}");
+                NotifyError($"Erro ao mover imagens: {ex.Message}");
             }
+        }
+
+        public void NotifyError(string message)
+        {
+            var notify = new ProgressGameplayDto
+            {
+                Success = false,
+                MessageError = message,
+            };
+
+            NotifiesSubscribers(notify);
         }
 
         protected abstract Task MoveTypeFileImplement(string moveFromFolder, string moveToFolder);
