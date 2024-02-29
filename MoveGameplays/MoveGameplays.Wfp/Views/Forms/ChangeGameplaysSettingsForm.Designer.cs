@@ -50,6 +50,7 @@
             // lb_configuracoes
             // 
             lb_configuracoes.Font = new Font("Segoe UI Black", 17.75F, FontStyle.Bold);
+            lb_configuracoes.ForeColor = SystemColors.ButtonFace;
             lb_configuracoes.Location = new Point(0, 36);
             lb_configuracoes.Name = "lb_configuracoes";
             lb_configuracoes.Size = new Size(796, 32);
@@ -60,6 +61,7 @@
             // label1
             // 
             label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ButtonFace;
             label1.Location = new Point(2, 82);
             label1.Name = "label1";
             label1.Size = new Size(796, 22);
@@ -70,6 +72,7 @@
             // lb_path_gameplays_hd
             // 
             lb_path_gameplays_hd.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_path_gameplays_hd.ForeColor = SystemColors.ButtonFace;
             lb_path_gameplays_hd.Location = new Point(2, 133);
             lb_path_gameplays_hd.Name = "lb_path_gameplays_hd";
             lb_path_gameplays_hd.Size = new Size(796, 19);
@@ -80,6 +83,7 @@
             // label3
             // 
             label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ButtonFace;
             label3.Location = new Point(2, 181);
             label3.Name = "label3";
             label3.Size = new Size(796, 22);
@@ -171,7 +175,7 @@
             Controls.Add(label1);
             Controls.Add(lb_configuracoes);
             Controls.Add(headerUserControl1);
-            ForeColor = SystemColors.Control;
+            ForeColor = Color.FromArgb(5, 5, 5);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ChangeGameplaysSettingsForm";
             StartPosition = FormStartPosition.CenterParent;
