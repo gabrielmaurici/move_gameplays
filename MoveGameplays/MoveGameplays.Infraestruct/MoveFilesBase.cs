@@ -73,8 +73,6 @@ namespace MoveGameplays.Infraestruct
         {
             try
             {
-                Console.WriteLine("Movendo todas as imagens");
-
                 FileInfo[]? files = new DirectoryInfo(moveFromFolder)
                 .GetFiles("*.png")
                 .ToArray();
@@ -85,6 +83,7 @@ namespace MoveGameplays.Infraestruct
 
                 var progressGameplay = new ProgressGameplayDto()
                 {
+                    Success = true,
                     FileType = EFileType.Png,
                     PercentageOfProgress = 0
                 };
@@ -98,6 +97,8 @@ namespace MoveGameplays.Infraestruct
 
                     progressGameplay.FileName = file.Name;
                     progressGameplay.NumberOfFiles = $"{count}/{totalFiles}";
+
+                    File.Copy(file.FullName, moveToFolderCombine);
 
                     NotifiesSubscribers(progressGameplay);
 

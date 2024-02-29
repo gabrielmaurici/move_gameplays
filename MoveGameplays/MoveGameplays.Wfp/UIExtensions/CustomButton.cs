@@ -11,7 +11,7 @@ namespace MoveGameplays.Wfp.UIExtensions
         private Color borderColor = Color.PaleVioletRed;
 
         //Properties
-        [Category("RJ Code Advance")]
+        [Category("Custom Button")]
         public int BorderSize
         {
             get { return borderSize; }
@@ -22,7 +22,7 @@ namespace MoveGameplays.Wfp.UIExtensions
             }
         }
 
-        [Category("RJ Code Advance")]
+        [Category("Custom Button")]
         public int BorderRadius
         {
             get { return borderRadius; }
@@ -33,7 +33,7 @@ namespace MoveGameplays.Wfp.UIExtensions
             }
         }
 
-        [Category("RJ Code Advance")]
+        [Category("Custom Button")]
         public Color BorderColor
         {
             get { return borderColor; }
@@ -44,14 +44,14 @@ namespace MoveGameplays.Wfp.UIExtensions
             }
         }
 
-        [Category("RJ Code Advance")]
+        [Category("Custom Button")]
         public Color BackgroundColor
         {
             get { return BackColor; }
             set { BackColor = value; }
         }
 
-        [Category("RJ Code Advance")]
+        [Category("Custom Button")]
         public Color TextColor
         {
             get { return ForeColor; }

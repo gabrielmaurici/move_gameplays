@@ -59,16 +59,16 @@ namespace MoveGameplays.Wfp.Views
         private async void Btn_move_last_gameplay_Click(object sender, EventArgs e)
         {
             var moveFiles = new MoveLastMp4File();
-            await MoveGameplays(moveFiles);
+            await MoveGameplaysBase(moveFiles);
         }
 
         private async void Btn_move_last_10_gameplays_Click(object sender, EventArgs e)
         {
             var moveFiles = new MoveLast10Mp4Files();
-            await MoveGameplays(moveFiles);
+            await MoveGameplaysBase(moveFiles);
         }
 
-        private async Task MoveGameplays(MoveFilesBase moveFiles)
+        private async Task MoveGameplaysBase(MoveFilesBase moveFiles)
         {
             lb_progress_move_gameplays.Visible = false;
             progressBar_gameplays.Visible = true;

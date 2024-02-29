@@ -34,7 +34,7 @@ namespace MoveGameplays.Wfp.Views
             _monitorExternalHdInput.Subscribe(this);
             _monitorExternalHdInput.Monitor();
 
-            //HideFormAfter5Seconds();
+            HideFormAfter5Seconds();
         }
 
         public void Notify(ExpectedHdConnectedDto notification)

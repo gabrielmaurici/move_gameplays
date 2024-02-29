@@ -71,7 +71,7 @@
             // 
             // btn_minimize
             // 
-            btn_minimize.BackgroundImage = (Image)resources.GetObject("btn_minimize.BackgroundImage");
+            btn_minimize.BackgroundImage = Properties.Resources.icons8_macos_minimize_20;
             btn_minimize.FlatStyle = FlatStyle.Flat;
             btn_minimize.Location = new Point(736, 5);
             btn_minimize.Name = "btn_minimize";
