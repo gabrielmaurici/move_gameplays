@@ -24,8 +24,10 @@ namespace MoveGameplays.Wfp.Views
         public MonitorHdForm(IMonitorExternalHdInput monitorExternalHdInput)
         {
             InitializeComponent();
+
             FormBorderStyle = FormBorderStyle.None;
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+
             _monitorExternalHdInput = monitorExternalHdInput;
         }
 
@@ -47,19 +49,19 @@ namespace MoveGameplays.Wfp.Views
         {
             if (WindowState == FormWindowState.Minimized)
             {
-                //Hide();
+                WindowState = FormWindowState.Normal;
             }
         }
 
         private void MonitorHdForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //_monitorExternalHdInput.Unsubscribe(this);
+            _monitorExternalHdInput.Unsubscribe(this);
         }
 
         private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Show();
-            WindowState = FormWindowState.Normal;
+            var form = CurrentForm.Current;
+            form?.Show();
         }
 
         private void HideFormAfter5Seconds()
@@ -75,17 +77,6 @@ namespace MoveGameplays.Wfp.Views
                 Hide();
             };
             timer.Start();
-        }
-
-        private void Btn_close_Click(object sender, EventArgs e)
-        {
-            Hide();
-            WindowState = FormWindowState.Minimized;
-        }
-
-        private void Btn_minimize_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
         }
     }
 }

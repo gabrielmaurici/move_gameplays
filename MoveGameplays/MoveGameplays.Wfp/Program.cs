@@ -13,7 +13,6 @@ namespace MoveGameplays.Wfp
     {
         public static IServiceProvider? ServiceProvider { get; private set; }
 
-
         [STAThread]
         static void Main()
         {
@@ -26,14 +25,13 @@ namespace MoveGameplays.Wfp
 
             Application.Run(ServiceProvider.GetRequiredService<MonitorHdForm>());
         }
-        
 
         static IHostBuilder CreateHostBuilder()
         {
             return Host.CreateDefaultBuilder()
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    var directory = "E:\\dev\\Projetos\\move_gameplays\\MoveGameplays\\MoveGameplays.Wfp";
+                    var directory = AppDomain.CurrentDomain.BaseDirectory;
                     config.SetBasePath(directory);
                     config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
                 })
