@@ -9,17 +9,6 @@ namespace MoveGameplays.Wfp.Views
 {
     public partial class OptionsAndMoveFilesForm : Form, IObserverContract<ProgressGameplayDto>
     {
-        [LibraryImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static partial IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // width of ellipse
-            int nHeightEllipse // height of ellipse
-        );
-
         private readonly MoveGameplaysConfigModel _configs;
         private readonly string _diskDrive;
 
@@ -50,7 +39,8 @@ namespace MoveGameplays.Wfp.Views
                         progressBar_gameplays.Value = notification.PercentageOfProgress;
                         break;
                 }
-            } else
+            }
+            else
             {
                 MessageBox.Show(notification.MessageError);
             }
@@ -83,15 +73,23 @@ namespace MoveGameplays.Wfp.Views
             Close();
         }
 
-        private void Btn_close_Click(object sender, EventArgs e)
+        private void OptionsAndMoveFilesForm_Resize(object sender, EventArgs e)
         {
-            Hide();
-            WindowState = FormWindowState.Minimized;
+            if (WindowState == FormWindowState.Minimized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
         }
 
-        private void Btn_minimize_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
+        [LibraryImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static partial IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // width of ellipse
+            int nHeightEllipse // height of ellipse
+        );
     }
 }

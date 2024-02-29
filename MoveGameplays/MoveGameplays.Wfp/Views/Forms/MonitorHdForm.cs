@@ -1,6 +1,7 @@
 using MoveGameplays.Domain.Dtos;
 using MoveGameplays.Domain.Interfaces.Observer;
 using MoveGameplays.Wfp.BackgroundService.Interfaces;
+using MoveGameplays.Wfp.Views.Forms;
 using System.Runtime.InteropServices;
 using Timer = System.Windows.Forms.Timer;
 
@@ -8,26 +9,12 @@ namespace MoveGameplays.Wfp.Views
 {
     public partial class MonitorHdForm : Form, IObserverContract<ExpectedHdConnectedDto>
     {
-        [LibraryImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static partial IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // width of ellipse
-            int nHeightEllipse // height of ellipse
-        );
-
         private readonly IMonitorExternalHdInput _monitorExternalHdInput;
 
         public MonitorHdForm(IMonitorExternalHdInput monitorExternalHdInput)
         {
             InitializeComponent();
-
-            FormBorderStyle = FormBorderStyle.None;
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-
             _monitorExternalHdInput = monitorExternalHdInput;
         }
 
@@ -41,8 +28,9 @@ namespace MoveGameplays.Wfp.Views
 
         public void Notify(ExpectedHdConnectedDto notification)
         {
+            Hide();
             new OptionsAndMoveFilesForm(notification.diskDrive, notification.moveGameplaysConfig).ShowDialog();
-            HideFormAfter5Seconds();
+            Show();
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -78,5 +66,23 @@ namespace MoveGameplays.Wfp.Views
             };
             timer.Start();
         }
+
+        private void CustomButton1_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new ChangeGameplaysSettingsForm().ShowDialog();
+            Show();
+        }
+
+        [LibraryImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static partial IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // width of ellipse
+            int nHeightEllipse // height of ellipse
+        );
     }
 }
