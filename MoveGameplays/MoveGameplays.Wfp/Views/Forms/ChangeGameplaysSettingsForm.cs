@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MoveGameplays.Domain.Dtos;
 using MoveGameplays.Domain.Interfaces;
+using MoveGameplays.Wfp.Helpers;
 using System.Runtime.InteropServices;
 
 namespace MoveGameplays.Wfp.Views.Forms
@@ -12,6 +13,8 @@ namespace MoveGameplays.Wfp.Views.Forms
         public ChangeGameplaysSettingsForm(IServiceProvider services)
         {
             InitializeComponent();
+
+            _ = new DraggableForm(this, headerUserControl1.GetPanel());
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
 
             _moveGameplaysSettingsService = services.GetRequiredService<IMoveGameplaysSettignsService>();

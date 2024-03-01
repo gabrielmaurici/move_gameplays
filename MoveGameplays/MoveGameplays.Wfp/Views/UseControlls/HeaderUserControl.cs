@@ -25,5 +25,7 @@
                 CurrentForm.Update(form);
             }
         }
+
+        public Panel GetPanel() => panel1;
     }
 }

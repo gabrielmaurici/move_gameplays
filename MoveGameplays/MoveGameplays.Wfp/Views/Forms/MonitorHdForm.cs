@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MoveGameplays.Domain.Dtos;
 using MoveGameplays.Domain.Interfaces.Observer;
 using MoveGameplays.Wfp.BackgroundService.Interfaces;
+using MoveGameplays.Wfp.Helpers;
 using MoveGameplays.Wfp.Views.Forms;
 using System.Runtime.InteropServices;
 using Timer = System.Windows.Forms.Timer;
@@ -16,6 +17,8 @@ namespace MoveGameplays.Wfp.Views
         public MonitorHdForm(IServiceProvider services)
         {
             InitializeComponent();
+
+            _ = new DraggableForm(this, headerUserControl1.GetPanel());
             CurrentForm.Update(this);
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
 

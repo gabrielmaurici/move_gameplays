@@ -6,18 +6,19 @@ namespace MoveGameplays.Wfp.UIExtensions
     public class CustomButton : Button
     {
         //Fields
-        private int borderSize = 0;
-        private int borderRadius = 10;
-        private Color borderColor = Color.PaleVioletRed;
+        private int _borderSize = 0;
+        private int _borderRadius = 10;
+        private Color _borderColor = Color.PaleVioletRed;
+        private Color _previousColor;
 
         //Properties
         [Category("Custom Button")]
         public int BorderSize
         {
-            get { return borderSize; }
+            get { return _borderSize; }
             set
             {
-                borderSize = value;
+                _borderSize = value;
                 Invalidate();
             }
         }
@@ -25,10 +26,10 @@ namespace MoveGameplays.Wfp.UIExtensions
         [Category("Custom Button")]
         public int BorderRadius
         {
-            get { return borderRadius; }
+            get { return _borderRadius; }
             set
             {
-                borderRadius = value;
+                _borderRadius = value;
                 Invalidate();
             }
         }
@@ -36,10 +37,10 @@ namespace MoveGameplays.Wfp.UIExtensions
         [Category("Custom Button")]
         public Color BorderColor
         {
-            get { return borderColor; }
+            get { return _borderColor; }
             set
             {
-                borderColor = value;
+                _borderColor = value;
                 Invalidate();
             }
         }
@@ -75,11 +76,12 @@ namespace MoveGameplays.Wfp.UIExtensions
 
         private void CustomButton_MouseLeave(object? sender, EventArgs e)
         {
-            BackgroundColor = Color.FromArgb(75, 75, 75);
+            BackgroundColor = _previousColor;
         }
 
         private void CustomButton_MouseEnter(object? sender, EventArgs e)
         {
+            _previousColor = BackgroundColor;
             BackgroundColor = Color.FromArgb(0, 165, 255);
         }
 
@@ -104,17 +106,17 @@ namespace MoveGameplays.Wfp.UIExtensions
 
 
             Rectangle rectSurface = ClientRectangle;
-            Rectangle rectBorder = Rectangle.Inflate(rectSurface, -borderSize, -borderSize);
+            Rectangle rectBorder = Rectangle.Inflate(rectSurface, -_borderSize, -_borderSize);
             int smoothSize = 2;
-            if (borderSize > 0)
-                smoothSize = borderSize;
+            if (_borderSize > 0)
+                smoothSize = _borderSize;
 
-            if (borderRadius > 2) //Rounded button
+            if (_borderRadius > 2) //Rounded button
             {
-                using GraphicsPath pathSurface = GetFigurePath(rectSurface, borderRadius);
-                using GraphicsPath pathBorder = GetFigurePath(rectBorder, borderRadius - borderSize);
+                using GraphicsPath pathSurface = GetFigurePath(rectSurface, _borderRadius);
+                using GraphicsPath pathBorder = GetFigurePath(rectBorder, _borderRadius - _borderSize);
                 using Pen penSurface = new(Parent.BackColor, smoothSize);
-                using Pen penBorder = new(borderColor, borderSize);
+                using Pen penBorder = new(_borderColor, _borderSize);
                 pevent.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 //Button surface
                 Region = new Region(pathSurface);
@@ -122,7 +124,7 @@ namespace MoveGameplays.Wfp.UIExtensions
                 pevent.Graphics.DrawPath(penSurface, pathSurface);
 
                 //Button border                    
-                if (borderSize >= 1)
+                if (_borderSize >= 1)
                     //Draw control border
                     pevent.Graphics.DrawPath(penBorder, pathBorder);
             }
@@ -132,9 +134,9 @@ namespace MoveGameplays.Wfp.UIExtensions
                 //Button surface
                 Region = new Region(rectSurface);
                 //Button border
-                if (borderSize >= 1)
+                if (_borderSize >= 1)
                 {
-                    using Pen penBorder = new Pen(borderColor, borderSize);
+                    using Pen penBorder = new Pen(_borderColor, _borderSize);
                     penBorder.Alignment = PenAlignment.Inset;
                     pevent.Graphics.DrawRectangle(penBorder, 0, 0, Width - 1, Height - 1);
                 }
@@ -153,8 +155,8 @@ namespace MoveGameplays.Wfp.UIExtensions
 
         private void Button_Resize(object sender, EventArgs e)
         {
-            if (borderRadius > Height)
-                borderRadius = Height;
+            if (_borderRadius > Height)
+                _borderRadius = Height;
         }
     }
 }

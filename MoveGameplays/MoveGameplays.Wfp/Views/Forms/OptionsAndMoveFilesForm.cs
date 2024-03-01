@@ -3,6 +3,7 @@ using MoveGameplays.Domain.Enums;
 using MoveGameplays.Domain.Interfaces.Observer;
 using MoveGameplays.Domain.Models;
 using MoveGameplays.Infraestruct;
+using MoveGameplays.Wfp.Helpers;
 using System.Runtime.InteropServices;
 
 namespace MoveGameplays.Wfp.Views
@@ -15,6 +16,8 @@ namespace MoveGameplays.Wfp.Views
         public OptionsAndMoveFilesForm(string diskDrive, MoveGameplaysConfigModel configs)
         {
             InitializeComponent();
+
+            _ = new DraggableForm(this, headerUserControl1.GetPanel());
             FormBorderStyle = FormBorderStyle.None;
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
 
