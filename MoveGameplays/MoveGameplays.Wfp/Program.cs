@@ -23,7 +23,7 @@ namespace MoveGameplays.Wfp
             var host = CreateHostBuilder().Build();
             ServiceProvider = host.Services;
 
-            Application.Run(ServiceProvider.GetRequiredService<MonitorHdForm>());
+            Application.Run(new MonitorHdForm(ServiceProvider));
         }
 
         static IHostBuilder CreateHostBuilder()
@@ -36,9 +36,10 @@ namespace MoveGameplays.Wfp
                     config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
                 })
                 .ConfigureServices((context, services) => {
-                    var moveGameplaysConfig = context.Configuration.GetSection("MoveGameplaysConfig")
-                                                                   .Get<MoveGameplaysConfigModel>()!;
+                    var moveGameplaysConfig = context.Configuration.GetSection("MoveGameplaysConfig").Get<MoveGameplaysConfigModel>()!;
+
                     services.AddSingleton(moveGameplaysConfig);
+                    services.AddSingleton(context.Configuration);
                     services.AddInfraDependeces();
                     services.AddScoped<IMonitorExternalHdInput, MonitorExternalHdInput>();
                     services.AddTransient<MonitorHdForm>();

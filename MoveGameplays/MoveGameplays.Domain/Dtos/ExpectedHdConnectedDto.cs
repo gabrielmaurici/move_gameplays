@@ -2,5 +2,5 @@
 
 namespace MoveGameplays.Domain.Dtos
 {
-    public record ExpectedHdConnectedDto(string diskDrive, MoveGameplaysConfigModel moveGameplaysConfig);
+    public record ExpectedHdConnectedDto(string DiskDrive, MoveGameplaysConfigModel MoveGameplaysConfig);
 }

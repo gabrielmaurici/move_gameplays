@@ -60,25 +60,12 @@ namespace MoveGameplays.Wfp.Views
 
         private async Task MoveGameplaysBase(MoveFilesBase moveFiles)
         {
-            lb_progress_move_gameplays.Visible = false;
-            progressBar_gameplays.Visible = true;
-
             moveFiles.Subscribe(this);
             await moveFiles.Move(_diskDrive + "\\" + _configs.FolderGameplaysHd, _configs.PathGameplaysPc);
             moveFiles.Unsubscribe(this);
 
-            progressBar_gameplays.Visible = false;
-
             MessageBox.Show("Todas as imagens e gameplays foram movidas com sucesso!");
             Close();
-        }
-
-        private void OptionsAndMoveFilesForm_Resize(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Minimized)
-            {
-                WindowState = FormWindowState.Normal;
-            }
         }
 
         [LibraryImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]

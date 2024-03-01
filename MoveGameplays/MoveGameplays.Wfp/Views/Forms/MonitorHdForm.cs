@@ -1,3 +1,4 @@
+using Microsoft.Extensions.DependencyInjection;
 using MoveGameplays.Domain.Dtos;
 using MoveGameplays.Domain.Interfaces.Observer;
 using MoveGameplays.Wfp.BackgroundService.Interfaces;
@@ -9,13 +10,17 @@ namespace MoveGameplays.Wfp.Views
 {
     public partial class MonitorHdForm : Form, IObserverContract<ExpectedHdConnectedDto>
     {
+        private readonly IServiceProvider _serviceProvider;
         private readonly IMonitorExternalHdInput _monitorExternalHdInput;
 
-        public MonitorHdForm(IMonitorExternalHdInput monitorExternalHdInput)
+        public MonitorHdForm(IServiceProvider services)
         {
             InitializeComponent();
+            CurrentForm.Update(this);
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            _monitorExternalHdInput = monitorExternalHdInput;
+
+            _serviceProvider = services;
+            _monitorExternalHdInput = services.GetRequiredService<IMonitorExternalHdInput>();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -29,16 +34,15 @@ namespace MoveGameplays.Wfp.Views
         public void Notify(ExpectedHdConnectedDto notification)
         {
             Hide();
-            new OptionsAndMoveFilesForm(notification.diskDrive, notification.moveGameplaysConfig).ShowDialog();
+            new OptionsAndMoveFilesForm(notification.DiskDrive, notification.MoveGameplaysConfig).ShowDialog();
             Show();
         }
 
-        private void Form1_Resize(object sender, EventArgs e)
+        private void Btn_configurations_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Minimized)
-            {
-                WindowState = FormWindowState.Normal;
-            }
+            Hide();
+            new ChangeGameplaysSettingsForm(_serviceProvider).ShowDialog();
+            Show();
         }
 
         private void MonitorHdForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -49,7 +53,11 @@ namespace MoveGameplays.Wfp.Views
         private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var form = CurrentForm.Current;
-            form?.Show();
+            if (form != null)
+            {
+                form.Show();
+                form.WindowState = FormWindowState.Normal;
+            }
         }
 
         private void HideFormAfter5Seconds()
@@ -65,13 +73,6 @@ namespace MoveGameplays.Wfp.Views
                 Hide();
             };
             timer.Start();
-        }
-
-        private void CustomButton1_Click(object sender, EventArgs e)
-        {
-            Hide();
-            new ChangeGameplaysSettingsForm().ShowDialog();
-            Show();
         }
 
         [LibraryImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]

@@ -56,6 +56,7 @@
             btn_minimize.Size = new Size(22, 22);
             btn_minimize.TabIndex = 2;
             btn_minimize.UseVisualStyleBackColor = true;
+            btn_minimize.Click += Btn_minimize_Click_1;
             // 
             // btn_close
             // 
@@ -66,6 +67,7 @@
             btn_close.Size = new Size(22, 22);
             btn_close.TabIndex = 1;
             btn_close.UseVisualStyleBackColor = true;
+            btn_close.Click += Btn_close_Click_1;
             // 
             // lb_move_gameplays
             // 

@@ -158,7 +158,6 @@
             Name = "OptionsAndMoveFilesForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OptionsAndMoveFilesForm";
-            Resize += OptionsAndMoveFilesForm_Resize;
             ResumeLayout(false);
         }
 

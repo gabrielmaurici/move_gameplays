@@ -1,27 +1,53 @@
-﻿using System.Runtime.InteropServices;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MoveGameplays.Domain.Dtos;
+using MoveGameplays.Domain.Interfaces;
+using System.Runtime.InteropServices;
 
 namespace MoveGameplays.Wfp.Views.Forms
 {
     public partial class ChangeGameplaysSettingsForm : Form
     {
-        //private readonly IChangeGameplaysSettings _changeGameplaysSettings;
+        private readonly IMoveGameplaysSettignsService _moveGameplaysSettingsService;
 
-        public ChangeGameplaysSettingsForm(/*IChangeGameplaysSettings changeGameplaysSettings*/)
+        public ChangeGameplaysSettingsForm(IServiceProvider services)
         {
             InitializeComponent();
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
 
-            //_changeGameplaysSettings = changeGameplaysSettings;
+            _moveGameplaysSettingsService = services.GetRequiredService<IMoveGameplaysSettignsService>();
         }
 
-        private void CustomButton2_Click(object sender, EventArgs e)
+        private void ChangeGameplaysSettingsForm_Load(object sender, EventArgs e)
         {
+            var configs = _moveGameplaysSettingsService.GetConfigs();
 
+            txt_hd_name.Text = configs.ExternalHdName;
+            txt_folder_gameplays_hd.Text = configs.FolderGameplaysHd;
+            txt_path_gameplays_pc.Text = configs.PathGameplaysPc;
         }
 
         private void Btn_back_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Btn_save_moveGameplays_configs_Click(object sender, EventArgs e)
+        {
+            var newConfigs = new ChangeGameplaysSettingsDto(ExternalHdName: txt_hd_name.Text,
+                                                FolderGameplaysHd: txt_folder_gameplays_hd.Text,
+                                                PathGameplaysPc: txt_path_gameplays_pc.Text);
+
+            _moveGameplaysSettingsService.UpdateConfigs(newConfigs);
+
+            MessageBox.Show("Configurações alteradas com sucesso, a aplicação será reiniciada");
+
+            RestartApplication();
+        }
+
+        private static void RestartApplication()
+        {
+            Application.Restart();
+            Environment.Exit(0);
         }
 
         [LibraryImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -34,5 +60,6 @@ namespace MoveGameplays.Wfp.Views.Forms
             int nWidthEllipse, // width of ellipse
             int nHeightEllipse // height of ellipse
         );
+
     }
 }

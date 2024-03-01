@@ -10,6 +10,7 @@ namespace MoveGameplays.IoC
     {
         public static IServiceCollection AddInfraDependeces(this IServiceCollection services)
             => services.AddScoped<ICheckExpectedHd, CheckExpectedHd>()
-                       .AddScoped<IEjectExternalHdService, EjectExternalHdService>();
+                       .AddScoped<IEjectExternalHdService, EjectExternalHdService>()
+                       .AddScoped<IMoveGameplaysSettignsService, MoveGameplaysSettingsService>();
     }
 }

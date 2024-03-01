@@ -33,7 +33,7 @@
             notifyIcon1 = new NotifyIcon(components);
             label1 = new Label();
             headerUserControl1 = new UseControlls.HeaderUserControl();
-            customButton1 = new UIExtensions.CustomButton();
+            btn_configurations = new UIExtensions.CustomButton();
             SuspendLayout();
             // 
             // notifyIcon1
@@ -62,24 +62,24 @@
             headerUserControl1.Size = new Size(796, 33);
             headerUserControl1.TabIndex = 1;
             // 
-            // customButton1
+            // btn_configurations
             // 
-            customButton1.BackColor = Color.FromArgb(75, 75, 75);
-            customButton1.BackgroundColor = Color.FromArgb(75, 75, 75);
-            customButton1.BorderColor = Color.PaleVioletRed;
-            customButton1.BorderRadius = 10;
-            customButton1.BorderSize = 0;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = FlatStyle.Flat;
-            customButton1.ForeColor = Color.White;
-            customButton1.Location = new Point(663, 39);
-            customButton1.Name = "customButton1";
-            customButton1.Size = new Size(125, 27);
-            customButton1.TabIndex = 2;
-            customButton1.Text = "Configurações";
-            customButton1.TextColor = Color.White;
-            customButton1.UseVisualStyleBackColor = false;
-            customButton1.Click += CustomButton1_Click;
+            btn_configurations.BackColor = Color.FromArgb(75, 75, 75);
+            btn_configurations.BackgroundColor = Color.FromArgb(75, 75, 75);
+            btn_configurations.BorderColor = Color.PaleVioletRed;
+            btn_configurations.BorderRadius = 10;
+            btn_configurations.BorderSize = 0;
+            btn_configurations.FlatAppearance.BorderSize = 0;
+            btn_configurations.FlatStyle = FlatStyle.Flat;
+            btn_configurations.ForeColor = Color.White;
+            btn_configurations.Location = new Point(663, 39);
+            btn_configurations.Name = "btn_configurations";
+            btn_configurations.Size = new Size(125, 27);
+            btn_configurations.TabIndex = 2;
+            btn_configurations.Text = "Configurações";
+            btn_configurations.TextColor = Color.White;
+            btn_configurations.UseVisualStyleBackColor = false;
+            btn_configurations.Click += Btn_configurations_Click;
             // 
             // MonitorHdForm
             // 
@@ -87,7 +87,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(5, 5, 5);
             ClientSize = new Size(800, 320);
-            Controls.Add(customButton1);
+            Controls.Add(btn_configurations);
             Controls.Add(headerUserControl1);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
@@ -97,7 +97,6 @@
             Text = "MonitorHdForm";
             FormClosed += MonitorHdForm_FormClosed;
             Load += Form1_Load;
-            Resize += Form1_Resize;
             ResumeLayout(false);
         }
 
@@ -106,6 +105,6 @@
         private NotifyIcon notifyIcon1;
         private Label label1;
         private UseControlls.HeaderUserControl headerUserControl1;
-        private UIExtensions.CustomButton customButton1;
+        private UIExtensions.CustomButton btn_configurations;
     }
 }

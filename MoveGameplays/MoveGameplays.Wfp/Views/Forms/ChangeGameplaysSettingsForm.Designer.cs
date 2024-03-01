@@ -28,24 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            headerUserControl1 = new UseControlls.HeaderUserControl();
             lb_configuracoes = new Label();
             label1 = new Label();
             lb_path_gameplays_hd = new Label();
             label3 = new Label();
             txt_hd_name = new TextBox();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txt_folder_gameplays_hd = new TextBox();
+            txt_path_gameplays_pc = new TextBox();
             btn_back = new UIExtensions.CustomButton();
-            customButton2 = new UIExtensions.CustomButton();
+            btn_save_moveGameplays_configs = new UIExtensions.CustomButton();
+            headerUserControl1 = new UseControlls.HeaderUserControl();
             SuspendLayout();
-            // 
-            // headerUserControl1
-            // 
-            headerUserControl1.Location = new Point(0, 0);
-            headerUserControl1.Name = "headerUserControl1";
-            headerUserControl1.Size = new Size(796, 33);
-            headerUserControl1.TabIndex = 0;
             // 
             // lb_configuracoes
             // 
@@ -101,25 +94,25 @@
             txt_hd_name.Size = new Size(329, 23);
             txt_hd_name.TabIndex = 5;
             // 
-            // textBox1
+            // txt_folder_gameplays_hd
             // 
-            textBox1.BackColor = Color.FromArgb(75, 75, 75);
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.ForeColor = SystemColors.Control;
-            textBox1.Location = new Point(234, 155);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(329, 23);
-            textBox1.TabIndex = 6;
+            txt_folder_gameplays_hd.BackColor = Color.FromArgb(75, 75, 75);
+            txt_folder_gameplays_hd.BorderStyle = BorderStyle.FixedSingle;
+            txt_folder_gameplays_hd.ForeColor = SystemColors.Control;
+            txt_folder_gameplays_hd.Location = new Point(234, 155);
+            txt_folder_gameplays_hd.Name = "txt_folder_gameplays_hd";
+            txt_folder_gameplays_hd.Size = new Size(329, 23);
+            txt_folder_gameplays_hd.TabIndex = 6;
             // 
-            // textBox2
+            // txt_path_gameplays_pc
             // 
-            textBox2.BackColor = Color.FromArgb(75, 75, 75);
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.ForeColor = SystemColors.Control;
-            textBox2.Location = new Point(234, 206);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(329, 23);
-            textBox2.TabIndex = 7;
+            txt_path_gameplays_pc.BackColor = Color.FromArgb(75, 75, 75);
+            txt_path_gameplays_pc.BorderStyle = BorderStyle.FixedSingle;
+            txt_path_gameplays_pc.ForeColor = SystemColors.Control;
+            txt_path_gameplays_pc.Location = new Point(234, 206);
+            txt_path_gameplays_pc.Name = "txt_path_gameplays_pc";
+            txt_path_gameplays_pc.Size = new Size(329, 23);
+            txt_path_gameplays_pc.TabIndex = 7;
             // 
             // btn_back
             // 
@@ -140,24 +133,31 @@
             btn_back.UseVisualStyleBackColor = false;
             btn_back.Click += Btn_back_Click;
             // 
-            // customButton2
+            // btn_save_moveGameplays_configs
             // 
-            customButton2.BackColor = Color.FromArgb(137, 180, 70);
-            customButton2.BackgroundColor = Color.FromArgb(137, 180, 70);
-            customButton2.BorderColor = Color.PaleVioletRed;
-            customButton2.BorderRadius = 10;
-            customButton2.BorderSize = 0;
-            customButton2.FlatAppearance.BorderSize = 0;
-            customButton2.FlatStyle = FlatStyle.Flat;
-            customButton2.ForeColor = Color.White;
-            customButton2.Location = new Point(421, 247);
-            customButton2.Name = "customButton2";
-            customButton2.Size = new Size(142, 34);
-            customButton2.TabIndex = 9;
-            customButton2.Text = "Salvar";
-            customButton2.TextColor = Color.White;
-            customButton2.UseVisualStyleBackColor = false;
-            customButton2.Click += CustomButton2_Click;
+            btn_save_moveGameplays_configs.BackColor = Color.FromArgb(137, 180, 70);
+            btn_save_moveGameplays_configs.BackgroundColor = Color.FromArgb(137, 180, 70);
+            btn_save_moveGameplays_configs.BorderColor = Color.PaleVioletRed;
+            btn_save_moveGameplays_configs.BorderRadius = 10;
+            btn_save_moveGameplays_configs.BorderSize = 0;
+            btn_save_moveGameplays_configs.FlatAppearance.BorderSize = 0;
+            btn_save_moveGameplays_configs.FlatStyle = FlatStyle.Flat;
+            btn_save_moveGameplays_configs.ForeColor = Color.White;
+            btn_save_moveGameplays_configs.Location = new Point(421, 247);
+            btn_save_moveGameplays_configs.Name = "btn_save_moveGameplays_configs";
+            btn_save_moveGameplays_configs.Size = new Size(142, 34);
+            btn_save_moveGameplays_configs.TabIndex = 9;
+            btn_save_moveGameplays_configs.Text = "Salvar";
+            btn_save_moveGameplays_configs.TextColor = Color.White;
+            btn_save_moveGameplays_configs.UseVisualStyleBackColor = false;
+            btn_save_moveGameplays_configs.Click += Btn_save_moveGameplays_configs_Click;
+            // 
+            // headerUserControl1
+            // 
+            headerUserControl1.Location = new Point(0, 0);
+            headerUserControl1.Name = "headerUserControl1";
+            headerUserControl1.Size = new Size(796, 33);
+            headerUserControl1.TabIndex = 10;
             // 
             // ChangeGameplaysSettingsForm
             // 
@@ -165,36 +165,36 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(5, 5, 5);
             ClientSize = new Size(800, 320);
-            Controls.Add(customButton2);
+            Controls.Add(headerUserControl1);
+            Controls.Add(btn_save_moveGameplays_configs);
             Controls.Add(btn_back);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txt_path_gameplays_pc);
+            Controls.Add(txt_folder_gameplays_hd);
             Controls.Add(txt_hd_name);
             Controls.Add(label3);
             Controls.Add(lb_path_gameplays_hd);
             Controls.Add(label1);
             Controls.Add(lb_configuracoes);
-            Controls.Add(headerUserControl1);
             ForeColor = Color.FromArgb(5, 5, 5);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ChangeGameplaysSettingsForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ChangeGameplaysSettingsForm";
+            Load += ChangeGameplaysSettingsForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private UseControlls.HeaderUserControl headerUserControl1;
         private Label lb_configuracoes;
         private Label label1;
         private Label lb_path_gameplays_hd;
         private Label label3;
         private TextBox txt_hd_name;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txt_folder_gameplays_hd;
+        private TextBox txt_path_gameplays_pc;
         private UIExtensions.CustomButton btn_back;
-        private UIExtensions.CustomButton customButton2;
+        private UIExtensions.CustomButton btn_save_moveGameplays_configs;
+        private UseControlls.HeaderUserControl headerUserControl1;
     }
 }
