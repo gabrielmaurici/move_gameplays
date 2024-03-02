@@ -27,5 +27,26 @@
         }
 
         public Panel GetPanel() => panel1;
+
+        private void Btn_minimize_MouseEnter(object sender, EventArgs e)
+        {
+            btn_minimize.BackgroundImage = Properties.Resources.icons8_macos_minimize_25_hover;
+        }
+
+        private void Btn_minimize_MouseLeave(object sender, EventArgs e)
+        {
+            btn_minimize.BackgroundImage = Properties.Resources.icons8_macos_minimize_25;
+        }
+
+        private void Btn_close_MouseEnter(object sender, EventArgs e)
+        {
+            btn_close.BackgroundImage = Properties.Resources.icons8_macos_close_27_hover;
+
+        }
+
+        private void Btn_close_MouseLeave(object sender, EventArgs e)
+        {
+            btn_close.BackgroundImage = Properties.Resources.icons8_macos_close_27;
+        }
     }
 }

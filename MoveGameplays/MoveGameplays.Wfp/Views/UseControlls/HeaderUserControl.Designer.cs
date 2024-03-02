@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HeaderUserControl));
             panel1 = new Panel();
             btn_minimize = new Button();
             btn_close = new Button();
@@ -49,25 +48,36 @@
             // 
             // btn_minimize
             // 
-            btn_minimize.BackgroundImage = Properties.Resources.icons8_macos_minimize_20;
+            btn_minimize.Anchor = AnchorStyles.None;
+            btn_minimize.BackgroundImage = Properties.Resources.icons8_macos_minimize_25;
+            btn_minimize.FlatAppearance.BorderSize = 0;
+            btn_minimize.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btn_minimize.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btn_minimize.FlatStyle = FlatStyle.Flat;
-            btn_minimize.Location = new Point(736, 5);
+            btn_minimize.Location = new Point(725, 3);
             btn_minimize.Name = "btn_minimize";
-            btn_minimize.Size = new Size(22, 22);
+            btn_minimize.Size = new Size(25, 27);
             btn_minimize.TabIndex = 2;
             btn_minimize.UseVisualStyleBackColor = true;
             btn_minimize.Click += Btn_minimize_Click_1;
+            btn_minimize.MouseEnter += Btn_minimize_MouseEnter;
+            btn_minimize.MouseLeave += Btn_minimize_MouseLeave;
             // 
             // btn_close
             // 
-            btn_close.BackgroundImage = (Image)resources.GetObject("btn_close.BackgroundImage");
+            btn_close.BackgroundImage = Properties.Resources.icons8_macos_close_27;
+            btn_close.FlatAppearance.BorderSize = 0;
+            btn_close.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btn_close.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btn_close.FlatStyle = FlatStyle.Flat;
-            btn_close.Location = new Point(764, 5);
+            btn_close.Location = new Point(756, 3);
             btn_close.Name = "btn_close";
-            btn_close.Size = new Size(22, 22);
+            btn_close.Size = new Size(26, 27);
             btn_close.TabIndex = 1;
             btn_close.UseVisualStyleBackColor = true;
             btn_close.Click += Btn_close_Click_1;
+            btn_close.MouseEnter += Btn_close_MouseEnter;
+            btn_close.MouseLeave += Btn_close_MouseLeave;
             // 
             // lb_move_gameplays
             // 
@@ -95,8 +105,8 @@
         #endregion
 
         private Panel panel1;
-        private Button btn_minimize;
         private Button btn_close;
         private Label lb_move_gameplays;
+        private Button btn_minimize;
     }
 }

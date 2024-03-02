@@ -63,9 +63,9 @@ namespace MoveGameplays.Wfp.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap close_icon_red {
+        internal static System.Drawing.Bitmap icons8_macos_close_27 {
             get {
-                object obj = ResourceManager.GetObject("close-icon-red", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_macos_close_27", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,29 @@ namespace MoveGameplays.Wfp.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_macos_minimize_20 {
+        internal static System.Drawing.Bitmap icons8_macos_close_27_hover {
             get {
-                object obj = ResourceManager.GetObject("icons8-macos-minimize-20", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_macos_close_27_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_macos_minimize_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_macos_minimize_25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_macos_minimize_25_hover {
+            get {
+                object obj = ResourceManager.GetObject("icons8_macos_minimize_25_hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
