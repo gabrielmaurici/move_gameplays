@@ -39,7 +39,7 @@
             // notifyIcon1
             // 
             notifyIcon1.Icon = (Icon)resources.GetObject("notifyIcon1.Icon");
-            notifyIcon1.Text = "notifyIcon1";
+            notifyIcon1.Text = "Move Gameplays";
             notifyIcon1.Visible = true;
             notifyIcon1.MouseDoubleClick += NotifyIcon1_MouseDoubleClick;
             // 
@@ -72,7 +72,7 @@
             btn_configurations.FlatAppearance.BorderSize = 0;
             btn_configurations.FlatStyle = FlatStyle.Flat;
             btn_configurations.ForeColor = Color.White;
-            btn_configurations.Location = new Point(663, 39);
+            btn_configurations.Location = new Point(663, 50);
             btn_configurations.Name = "btn_configurations";
             btn_configurations.Size = new Size(125, 27);
             btn_configurations.TabIndex = 2;

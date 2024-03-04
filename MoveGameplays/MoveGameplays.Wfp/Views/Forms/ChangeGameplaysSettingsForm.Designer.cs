@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeGameplaysSettingsForm));
             lb_configuracoes = new Label();
             label1 = new Label();
             lb_path_gameplays_hd = new Label();
@@ -177,6 +178,7 @@
             Controls.Add(lb_configuracoes);
             ForeColor = Color.FromArgb(5, 5, 5);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ChangeGameplaysSettingsForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ChangeGameplaysSettingsForm";
