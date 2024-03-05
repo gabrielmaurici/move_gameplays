@@ -17,6 +17,7 @@ namespace MoveGameplays.Wfp.Views
         public MonitorHdForm(IServiceProvider services)
         {
             InitializeComponent();
+            ConfigureNotifyIcon();
 
             _ = new DraggableForm(this, headerUserControl1.GetPanel());
             CurrentForm.Update(this);
@@ -36,16 +37,17 @@ namespace MoveGameplays.Wfp.Views
 
         public void Notify(ExpectedHdConnectedDto notification)
         {
-            Hide();
-            new OptionsAndMoveFilesForm(notification.DiskDrive, notification.MoveGameplaysConfig).ShowDialog();
-            Show();
+            Invoke((MethodInvoker)delegate
+            {
+                Hide();
+                new OptionsAndMoveFilesForm(notification.DiskDrive, notification.MoveGameplaysConfig).Show();
+            });
         }
 
         private void Btn_configurations_Click(object sender, EventArgs e)
         {
             Hide();
-            new ChangeGameplaysSettingsForm(_serviceProvider).ShowDialog();
-            Show();
+            new ChangeGameplaysSettingsForm(_serviceProvider).Show();
         }
 
         private void MonitorHdForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -53,14 +55,27 @@ namespace MoveGameplays.Wfp.Views
             _monitorExternalHdInput.Unsubscribe(this);
         }
 
-        private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void ConfigureNotifyIcon()
         {
-            var form = CurrentForm.Current;
-            if (form != null)
-            {
-                form.Show();
-                form.WindowState = FormWindowState.Normal;
-            }
+            notifyIcon1.ContextMenuStrip = new ContextMenuStrip();
+            notifyIcon1.ContextMenuStrip.Items.Add("Sair", null, NotifyExit_Click!);
+        }
+
+        private void NotifyExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void NotifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            Invoke((MethodInvoker)delegate {
+                var form = CurrentForm.Current;
+                if (form != null)
+                {
+                    form.Show();
+                    form.WindowState = FormWindowState.Normal;
+                }
+            });
         }
 
         private void HideFormAfter5Seconds()

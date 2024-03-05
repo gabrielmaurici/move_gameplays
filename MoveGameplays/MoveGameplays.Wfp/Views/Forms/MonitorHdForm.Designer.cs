@@ -41,7 +41,7 @@
             notifyIcon1.Icon = (Icon)resources.GetObject("notifyIcon1.Icon");
             notifyIcon1.Text = "Move Gameplays";
             notifyIcon1.Visible = true;
-            notifyIcon1.MouseDoubleClick += NotifyIcon1_MouseDoubleClick;
+            notifyIcon1.MouseClick += NotifyIcon1_MouseClick;
             // 
             // label1
             // 

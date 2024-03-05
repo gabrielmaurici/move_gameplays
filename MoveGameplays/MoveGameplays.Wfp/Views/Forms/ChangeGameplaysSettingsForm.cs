@@ -31,6 +31,8 @@ namespace MoveGameplays.Wfp.Views.Forms
 
         private void Btn_back_Click(object sender, EventArgs e)
         {
+            var monitorForm = (MonitorHdForm)Application.OpenForms["MonitorHdForm"]!;
+            monitorForm.Show();
             Close();
         }
 

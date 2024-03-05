@@ -18,12 +18,15 @@
 
         private void Btn_close_Click_1(object sender, EventArgs e)
         {
-            if (Parent is Form form)
-            {
-                form.WindowState = FormWindowState.Minimized;
-                form.Hide();
-                CurrentForm.Update(form);
-            }
+            Invoke((MethodInvoker)delegate {
+               
+                if (Parent is Form form)
+                {
+                    form.WindowState = FormWindowState.Minimized;
+                    form.Hide();
+                    CurrentForm.Update(form);
+                }
+            });
         }
 
         public Panel GetPanel() => panel1;

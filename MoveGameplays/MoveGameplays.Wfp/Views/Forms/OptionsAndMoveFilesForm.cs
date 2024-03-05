@@ -51,12 +51,20 @@ namespace MoveGameplays.Wfp.Views
 
         private async void Btn_move_last_gameplay_Click(object sender, EventArgs e)
         {
+            btn_move_last_gameplay.Enabled = false;
+            btn_move_last_10_gameplays.Enabled = false;
+            lb_choice_option.Visible = false;
+
             var moveFiles = new MoveLastMp4File();
             await MoveGameplaysBase(moveFiles);
         }
 
         private async void Btn_move_last_10_gameplays_Click(object sender, EventArgs e)
         {
+            btn_move_last_gameplay.Enabled = false;
+            btn_move_last_10_gameplays.Enabled = false;
+            lb_choice_option.Visible = false;
+
             var moveFiles = new MoveLast10Mp4Files();
             await MoveGameplaysBase(moveFiles);
         }
@@ -68,6 +76,13 @@ namespace MoveGameplays.Wfp.Views
             moveFiles.Unsubscribe(this);
 
             MessageBox.Show("Todas as imagens e gameplays foram movidas com sucesso!");
+
+            btn_move_last_gameplay.Enabled = true;
+            btn_move_last_10_gameplays.Enabled = true;
+            lb_choice_option.Visible = true;
+
+            var monitorForm = (MonitorHdForm)Application.OpenForms["MonitorHdForm"]!;
+            CurrentForm.Update(monitorForm);
             Close();
         }
 

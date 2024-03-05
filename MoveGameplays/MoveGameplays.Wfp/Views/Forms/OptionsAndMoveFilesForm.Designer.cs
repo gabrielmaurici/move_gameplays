@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptionsAndMoveFilesForm));
-            lb_progress_move_gameplays = new Label();
+            lb_choice_option = new Label();
             lb_png_gameplays = new Label();
             lb_mp4_gameplays = new Label();
             btn_move_last_gameplay = new UIExtensions.CustomButton();
@@ -40,14 +40,14 @@
             // 
             // lb_progress_move_gameplays
             // 
-            lb_progress_move_gameplays.Font = new Font("Sans Serif Collection", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_progress_move_gameplays.ForeColor = SystemColors.ButtonFace;
-            lb_progress_move_gameplays.Location = new Point(1, 162);
-            lb_progress_move_gameplays.Name = "lb_progress_move_gameplays";
-            lb_progress_move_gameplays.Size = new Size(799, 50);
-            lb_progress_move_gameplays.TabIndex = 3;
-            lb_progress_move_gameplays.Text = "Escolha uma opção a cima";
-            lb_progress_move_gameplays.TextAlign = ContentAlignment.MiddleCenter;
+            lb_choice_option.Font = new Font("Sans Serif Collection", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_choice_option.ForeColor = SystemColors.ButtonFace;
+            lb_choice_option.Location = new Point(1, 162);
+            lb_choice_option.Name = "lb_progress_move_gameplays";
+            lb_choice_option.Size = new Size(799, 50);
+            lb_choice_option.TabIndex = 3;
+            lb_choice_option.Text = "Escolha uma opção a cima";
+            lb_choice_option.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lb_png_gameplays
             // 
@@ -57,7 +57,7 @@
             lb_png_gameplays.Name = "lb_png_gameplays";
             lb_png_gameplays.Size = new Size(739, 50);
             lb_png_gameplays.TabIndex = 5;
-            lb_png_gameplays.Text = "teste1";
+            lb_png_gameplays.Text = "";
             lb_png_gameplays.TextAlign = ContentAlignment.MiddleLeft;
             lb_png_gameplays.Visible = false;
             // 
@@ -69,7 +69,7 @@
             lb_mp4_gameplays.Name = "lb_mp4_gameplays";
             lb_mp4_gameplays.Size = new Size(739, 50);
             lb_mp4_gameplays.TabIndex = 6;
-            lb_mp4_gameplays.Text = "teste2";
+            lb_mp4_gameplays.Text = "";
             lb_mp4_gameplays.TextAlign = ContentAlignment.MiddleLeft;
             lb_mp4_gameplays.Visible = false;
             // 
@@ -151,7 +151,7 @@
             Controls.Add(btn_move_last_gameplay);
             Controls.Add(lb_mp4_gameplays);
             Controls.Add(lb_png_gameplays);
-            Controls.Add(lb_progress_move_gameplays);
+            Controls.Add(lb_choice_option);
             ForeColor = SystemColors.Desktop;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -162,7 +162,7 @@
         }
 
         #endregion
-        private Label lb_progress_move_gameplays;
+        private Label lb_choice_option;
         private Label lb_png_gameplays;
         private Label lb_mp4_gameplays;
         private UIExtensions.CustomButton btn_move_last_gameplay;

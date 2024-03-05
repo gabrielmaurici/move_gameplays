@@ -180,7 +180,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ChangeGameplaysSettingsForm";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ChangeGameplaysSettingsForm";
             Load += ChangeGameplaysSettingsForm_Load;
             ResumeLayout(false);
