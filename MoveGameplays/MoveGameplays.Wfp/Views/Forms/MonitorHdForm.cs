@@ -40,7 +40,7 @@ namespace MoveGameplays.Wfp.Views
             Invoke((MethodInvoker)delegate
             {
                 Hide();
-                new OptionsAndMoveFilesForm(notification.DiskDrive, notification.MoveGameplaysConfig).Show();
+                new OptionsAndMoveFilesForm(_serviceProvider, notification.DiskDrive, notification.MoveGameplaysConfig).Show();
             });
         }
 

@@ -5,7 +5,7 @@ using System.Runtime.Versioning;
 namespace MoveGameplays.Infraestruct
 {
     [SupportedOSPlatform("windows")]
-    public class CheckExpectedHd : ICheckExpectedHd
+    public class CheckExpectedHdService : ICheckExpectedHdService
     {
         public bool Check(string driveDisk, string hdName)
         {

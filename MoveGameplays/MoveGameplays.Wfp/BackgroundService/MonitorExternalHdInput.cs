@@ -10,10 +10,10 @@ using System.Runtime.Versioning;
 namespace MoveGameplays.Wfp.BackgroundService
 {
     [SupportedOSPlatform("windows")]
-    public class MonitorExternalHdInput(ICheckExpectedHd checkExpectedHd, MoveGameplaysConfigModel configurations) : IMonitorExternalHdInput, IDisposable
+    public class MonitorExternalHdInput(ICheckExpectedHdService checkExpectedHd, MoveGameplaysConfigModel configurations) : IMonitorExternalHdInput, IDisposable
     {
         private readonly ManagementEventWatcher _watcher = new();
-        private readonly ICheckExpectedHd _checkExpectedHd = checkExpectedHd;
+        private readonly ICheckExpectedHdService _checkExpectedHd = checkExpectedHd;
         private const string QUERY_VOLUME_CHANGE_EVENT = "SELECT * FROM Win32_VolumeChangeEvent";
         private readonly MoveGameplaysConfigModel _configs = configurations;
         private List<IObserverContract<ExpectedHdConnectedDto>> _observers = [];

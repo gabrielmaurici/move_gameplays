@@ -1,5 +1,7 @@
-﻿using MoveGameplays.Domain.Dtos;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MoveGameplays.Domain.Dtos;
 using MoveGameplays.Domain.Enums;
+using MoveGameplays.Domain.Interfaces;
 using MoveGameplays.Domain.Interfaces.Observer;
 using MoveGameplays.Domain.Models;
 using MoveGameplays.Infraestruct;
@@ -10,10 +12,13 @@ namespace MoveGameplays.Wfp.Views
 {
     public partial class OptionsAndMoveFilesForm : Form, IObserverContract<ProgressGameplayDto>
     {
-        private readonly MoveGameplaysConfigModel _configs;
         private readonly string _diskDrive;
+        private bool _fileMoveProcessError = false;
+        private readonly MoveGameplaysConfigModel _configs;
 
-        public OptionsAndMoveFilesForm(string diskDrive, MoveGameplaysConfigModel configs)
+        private readonly IDeleteFilesService _deleteFilesService;
+
+        public OptionsAndMoveFilesForm(IServiceProvider services,string diskDrive, MoveGameplaysConfigModel configs)
         {
             InitializeComponent();
 
@@ -23,6 +28,7 @@ namespace MoveGameplays.Wfp.Views
 
             _configs = configs;
             _diskDrive = diskDrive;
+            _deleteFilesService = services.GetRequiredService<IDeleteFilesService>();
         }
 
         public void Notify(ProgressGameplayDto notification)
@@ -45,15 +51,14 @@ namespace MoveGameplays.Wfp.Views
             }
             else
             {
+                _fileMoveProcessError = true;
                 MessageBox.Show(notification.MessageError);
             }
         }
 
         private async void Btn_move_last_gameplay_Click(object sender, EventArgs e)
         {
-            btn_move_last_gameplay.Enabled = false;
-            btn_move_last_10_gameplays.Enabled = false;
-            lb_choice_option.Visible = false;
+            DisableButtonsAndHideLbChoices();
 
             var moveFiles = new MoveLastMp4File();
             await MoveGameplaysBase(moveFiles);
@@ -61,9 +66,7 @@ namespace MoveGameplays.Wfp.Views
 
         private async void Btn_move_last_10_gameplays_Click(object sender, EventArgs e)
         {
-            btn_move_last_gameplay.Enabled = false;
-            btn_move_last_10_gameplays.Enabled = false;
-            lb_choice_option.Visible = false;
+            DisableButtonsAndHideLbChoices();
 
             var moveFiles = new MoveLast10Mp4Files();
             await MoveGameplaysBase(moveFiles);
@@ -71,19 +74,46 @@ namespace MoveGameplays.Wfp.Views
 
         private async Task MoveGameplaysBase(MoveFilesBase moveFiles)
         {
+            var pathGameplaysHd = _diskDrive + "\\" + _configs.FolderGameplaysHd;
+
             moveFiles.Subscribe(this);
-            await moveFiles.Move(_diskDrive + "\\" + _configs.FolderGameplaysHd, _configs.PathGameplaysPc);
+            await moveFiles.Move(pathGameplaysHd, _configs.PathGameplaysPc);
             moveFiles.Unsubscribe(this);
 
-            MessageBox.Show("Todas as imagens e gameplays foram movidas com sucesso!");
+            if (_fileMoveProcessError)
+            {
+                var messageDeleteFiles = _configs.DeleteFiles ? " Os arquivos do seu HD não serão deletados" : string.Empty;
+                MessageBox.Show("Ocorreu erro ao mover um ou mais arquivos." + messageDeleteFiles);
+            }
+            else
+            {
+                MessageBox.Show("Todas as imagens e gameplays foram movidas com sucesso!");
+            }
 
-            btn_move_last_gameplay.Enabled = true;
-            btn_move_last_10_gameplays.Enabled = true;
-            lb_choice_option.Visible = true;
+            if (_configs.DeleteFiles)
+                _deleteFilesService.Delete(pathGameplaysHd);
+            ResetStateOfLabelsAndButtons();
 
             var monitorForm = (MonitorHdForm)Application.OpenForms["MonitorHdForm"]!;
             CurrentForm.Update(monitorForm);
+
             Close();
+        }
+
+        private void DisableButtonsAndHideLbChoices()
+        {
+            btn_move_last_gameplay.Enabled = false;
+            btn_move_last_10_gameplays.Enabled = false;
+            lb_choice_option.Visible = false;
+        }
+
+        private void ResetStateOfLabelsAndButtons()
+        {
+            btn_move_last_gameplay.Enabled = true;
+            btn_move_last_10_gameplays.Enabled = true;
+            lb_choice_option.Visible = true;
+            lb_mp4_gameplays.Visible = false;
+            lb_png_gameplays.Visible = false;
         }
 
         [LibraryImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]

@@ -9,8 +9,9 @@ namespace MoveGameplays.IoC
     public static class AppDependeces
     {
         public static IServiceCollection AddInfraDependeces(this IServiceCollection services)
-            => services.AddScoped<ICheckExpectedHd, CheckExpectedHd>()
+            => services.AddScoped<ICheckExpectedHdService, CheckExpectedHdService>()
                        .AddScoped<IEjectExternalHdService, EjectExternalHdService>()
-                       .AddScoped<IMoveGameplaysSettignsService, MoveGameplaysSettingsService>();
+                       .AddScoped<IMoveGameplaysSettignsService, MoveGameplaysSettingsService>()
+                       .AddScoped<IDeleteFilesService, DeleteFilesService>();
     }
 }
