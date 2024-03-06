@@ -68,14 +68,17 @@ namespace MoveGameplays.Wfp.Views
 
         private void NotifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
-            Invoke((MethodInvoker)delegate {
-                var form = CurrentForm.Current;
-                if (form != null)
-                {
-                    form.Show();
-                    form.WindowState = FormWindowState.Normal;
-                }
-            });
+            if (e.Button == MouseButtons.Left)
+            {
+                Invoke((MethodInvoker)delegate {
+                    var form = CurrentForm.Current;
+                    if (form != null)
+                    {
+                        form.Show();
+                        form.WindowState = FormWindowState.Normal;
+                    }
+                });
+            }
         }
 
         private void HideFormAfter5Seconds()
