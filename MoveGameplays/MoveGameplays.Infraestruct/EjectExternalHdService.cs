@@ -2,7 +2,7 @@ using MoveGameplays.Domain.Interfaces;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
-namespace MoveGameplays.Infraestruct
+namespace MoveGameplays.Infrastructure
 {
     [SupportedOSPlatform("windows")]
     public class EjectExternalHdService : IEjectExternalHdService

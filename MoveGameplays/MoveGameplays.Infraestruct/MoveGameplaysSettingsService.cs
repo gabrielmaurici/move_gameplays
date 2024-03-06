@@ -5,7 +5,7 @@ using MoveGameplays.Domain.Interfaces;
 using MoveGameplays.Domain.Models;
 using Newtonsoft.Json;
 
-namespace MoveGameplays.Infraestruct
+namespace MoveGameplays.Infrastructure
 {
     public class MoveGameplaysSettingsService(IConfiguration configuration, MoveGameplaysConfigModel moveGameplayConfigs) : IMoveGameplaysSettignsService
     {

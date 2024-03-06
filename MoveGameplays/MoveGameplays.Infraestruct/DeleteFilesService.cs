@@ -1,6 +1,6 @@
 ﻿using MoveGameplays.Domain.Interfaces;
 
-namespace MoveGameplays.Infraestruct
+namespace MoveGameplays.Infrastructure
 {
     public class DeleteFilesService : IDeleteFilesService
     {

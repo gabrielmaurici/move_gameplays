@@ -4,7 +4,7 @@ using MoveGameplays.Domain.Enums;
 using MoveGameplays.Domain.Interfaces;
 using MoveGameplays.Domain.Interfaces.Observer;
 using MoveGameplays.Domain.Models;
-using MoveGameplays.Infraestruct;
+using MoveGameplays.Infrastructure;
 using MoveGameplays.Wfp.Helpers;
 using System.Runtime.InteropServices;
 
@@ -90,8 +90,9 @@ namespace MoveGameplays.Wfp.Views
                 MessageBox.Show("Todas as imagens e gameplays foram movidas com sucesso!");
             }
 
-            if (_configs.DeleteFiles)
+            if (_configs.DeleteFiles && !_fileMoveProcessError)
                 _deleteFilesService.Delete(pathGameplaysHd);
+
             ResetStateOfLabelsAndButtons();
 
             var monitorForm = (MonitorHdForm)Application.OpenForms["MonitorHdForm"]!;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MoveGameplays.Domain.Interfaces;
-using MoveGameplays.Infraestruct;
+using MoveGameplays.Infrastructure;
 using System.Runtime.Versioning;
 
 namespace MoveGameplays.IoC

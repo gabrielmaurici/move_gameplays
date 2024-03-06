@@ -3,7 +3,7 @@ using MoveGameplays.Domain.Enums;
 using MoveGameplays.Domain.Interfaces;
 using MoveGameplays.Domain.Interfaces.Observer;
 
-namespace MoveGameplays.Infraestruct
+namespace MoveGameplays.Infrastructure
 {
     public abstract class MoveFilesBase : IMoveFiles, IObservedContract<ProgressGameplayDto>
     {

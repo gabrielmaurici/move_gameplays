@@ -1,6 +1,6 @@
 using MoveGameplays.Domain.Dtos;
 
-namespace MoveGameplays.Infraestruct
+namespace MoveGameplays.Infrastructure
 {
     public class MoveLastMp4File : MoveFilesBase
     {

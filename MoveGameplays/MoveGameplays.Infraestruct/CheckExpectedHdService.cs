@@ -2,7 +2,7 @@ using MoveGameplays.Domain.Interfaces;
 using System.Management;
 using System.Runtime.Versioning;
 
-namespace MoveGameplays.Infraestruct
+namespace MoveGameplays.Infrastructure
 {
     [SupportedOSPlatform("windows")]
     public class CheckExpectedHdService : ICheckExpectedHdService

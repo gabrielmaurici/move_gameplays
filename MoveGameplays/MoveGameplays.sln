@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoveGameplays.Wfp", "MoveGa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoveGameplays.Domain", "MoveGameplays.Domain\MoveGameplays.Domain.csproj", "{960A5C04-60ED-44E7-92A1-61CA4F167405}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoveGameplays.Infraestruct", "MoveGameplays.Infraestruct\MoveGameplays.Infraestruct.csproj", "{7235F8C2-48FE-4F2C-8B51-771018758ACF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoveGameplays.Infrastructure", "MoveGameplays.Infraestruct\MoveGameplays.Infrastructure.csproj", "{7235F8C2-48FE-4F2C-8B51-771018758ACF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoveGameplays.IoC", "MoveGameplays.IoC\MoveGameplays.IoC.csproj", "{FC9B539C-BFCD-438B-BB22-DA8EE8328F55}"
 EndProject
