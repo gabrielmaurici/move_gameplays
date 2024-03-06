@@ -39,6 +39,8 @@
             btn_back = new UIExtensions.CustomButton();
             btn_save_moveGameplays_configs = new UIExtensions.CustomButton();
             headerUserControl1 = new UseControlls.HeaderUserControl();
+            lb_delete_files = new Label();
+            checkBox_deleteFiles = new UIExtensions.CustomCheckBox();
             SuspendLayout();
             // 
             // lb_configuracoes
@@ -56,7 +58,7 @@
             // 
             label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ButtonFace;
-            label1.Location = new Point(2, 82);
+            label1.Location = new Point(2, 93);
             label1.Name = "label1";
             label1.Size = new Size(796, 22);
             label1.TabIndex = 2;
@@ -67,7 +69,7 @@
             // 
             lb_path_gameplays_hd.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lb_path_gameplays_hd.ForeColor = SystemColors.ButtonFace;
-            lb_path_gameplays_hd.Location = new Point(2, 133);
+            lb_path_gameplays_hd.Location = new Point(2, 144);
             lb_path_gameplays_hd.Name = "lb_path_gameplays_hd";
             lb_path_gameplays_hd.Size = new Size(796, 19);
             lb_path_gameplays_hd.TabIndex = 3;
@@ -78,7 +80,7 @@
             // 
             label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ButtonFace;
-            label3.Location = new Point(2, 181);
+            label3.Location = new Point(2, 192);
             label3.Name = "label3";
             label3.Size = new Size(796, 22);
             label3.TabIndex = 4;
@@ -90,7 +92,7 @@
             txt_hd_name.BackColor = Color.FromArgb(75, 75, 75);
             txt_hd_name.BorderStyle = BorderStyle.FixedSingle;
             txt_hd_name.ForeColor = SystemColors.Control;
-            txt_hd_name.Location = new Point(234, 107);
+            txt_hd_name.Location = new Point(234, 118);
             txt_hd_name.Name = "txt_hd_name";
             txt_hd_name.Size = new Size(329, 23);
             txt_hd_name.TabIndex = 5;
@@ -100,7 +102,7 @@
             txt_folder_gameplays_hd.BackColor = Color.FromArgb(75, 75, 75);
             txt_folder_gameplays_hd.BorderStyle = BorderStyle.FixedSingle;
             txt_folder_gameplays_hd.ForeColor = SystemColors.Control;
-            txt_folder_gameplays_hd.Location = new Point(234, 155);
+            txt_folder_gameplays_hd.Location = new Point(234, 166);
             txt_folder_gameplays_hd.Name = "txt_folder_gameplays_hd";
             txt_folder_gameplays_hd.Size = new Size(329, 23);
             txt_folder_gameplays_hd.TabIndex = 6;
@@ -110,7 +112,7 @@
             txt_path_gameplays_pc.BackColor = Color.FromArgb(75, 75, 75);
             txt_path_gameplays_pc.BorderStyle = BorderStyle.FixedSingle;
             txt_path_gameplays_pc.ForeColor = SystemColors.Control;
-            txt_path_gameplays_pc.Location = new Point(234, 206);
+            txt_path_gameplays_pc.Location = new Point(234, 217);
             txt_path_gameplays_pc.Name = "txt_path_gameplays_pc";
             txt_path_gameplays_pc.Size = new Size(329, 23);
             txt_path_gameplays_pc.TabIndex = 7;
@@ -125,7 +127,7 @@
             btn_back.FlatAppearance.BorderSize = 0;
             btn_back.FlatStyle = FlatStyle.Flat;
             btn_back.ForeColor = Color.White;
-            btn_back.Location = new Point(234, 247);
+            btn_back.Location = new Point(234, 288);
             btn_back.Name = "btn_back";
             btn_back.Size = new Size(142, 34);
             btn_back.TabIndex = 8;
@@ -144,7 +146,7 @@
             btn_save_moveGameplays_configs.FlatAppearance.BorderSize = 0;
             btn_save_moveGameplays_configs.FlatStyle = FlatStyle.Flat;
             btn_save_moveGameplays_configs.ForeColor = Color.White;
-            btn_save_moveGameplays_configs.Location = new Point(421, 247);
+            btn_save_moveGameplays_configs.Location = new Point(421, 288);
             btn_save_moveGameplays_configs.Name = "btn_save_moveGameplays_configs";
             btn_save_moveGameplays_configs.Size = new Size(142, 34);
             btn_save_moveGameplays_configs.TabIndex = 9;
@@ -160,12 +162,39 @@
             headerUserControl1.Size = new Size(796, 33);
             headerUserControl1.TabIndex = 10;
             // 
+            // lb_delete_files
+            // 
+            lb_delete_files.AutoSize = true;
+            lb_delete_files.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            lb_delete_files.ForeColor = SystemColors.ButtonFace;
+            lb_delete_files.Location = new Point(234, 246);
+            lb_delete_files.Name = "lb_delete_files";
+            lb_delete_files.Size = new Size(122, 20);
+            lb_delete_files.TabIndex = 11;
+            lb_delete_files.Text = "Deletar arquivos";
+            // 
+            // checkBox_deleteFiles
+            // 
+            checkBox_deleteFiles.Location = new Point(362, 246);
+            checkBox_deleteFiles.MinimumSize = new Size(45, 22);
+            checkBox_deleteFiles.Name = "checkBox_deleteFiles";
+            checkBox_deleteFiles.OffBackColor = Color.FromArgb(75, 75, 75);
+            checkBox_deleteFiles.OffToggleColor = Color.Gainsboro;
+            checkBox_deleteFiles.OnBackColor = Color.FromArgb(0, 165, 255);
+            checkBox_deleteFiles.OnToggleColor = Color.WhiteSmoke;
+            checkBox_deleteFiles.Size = new Size(58, 24);
+            checkBox_deleteFiles.TabIndex = 12;
+            checkBox_deleteFiles.Text = null;
+            checkBox_deleteFiles.UseVisualStyleBackColor = true;
+            // 
             // ChangeGameplaysSettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(5, 5, 5);
-            ClientSize = new Size(800, 320);
+            ClientSize = new Size(800, 350);
+            Controls.Add(checkBox_deleteFiles);
+            Controls.Add(lb_delete_files);
             Controls.Add(headerUserControl1);
             Controls.Add(btn_save_moveGameplays_configs);
             Controls.Add(btn_back);
@@ -198,5 +227,7 @@
         private UIExtensions.CustomButton btn_back;
         private UIExtensions.CustomButton btn_save_moveGameplays_configs;
         private UseControlls.HeaderUserControl headerUserControl1;
+        private Label lb_delete_files;
+        private UIExtensions.CustomCheckBox checkBox_deleteFiles;
     }
 }

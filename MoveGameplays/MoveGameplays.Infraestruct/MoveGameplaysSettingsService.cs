@@ -1,45 +1,34 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Json;
-using MoveGameplays.Domain.Dtos;
+﻿using MoveGameplays.Domain.Dtos;
 using MoveGameplays.Domain.Interfaces;
 using MoveGameplays.Domain.Models;
 using Newtonsoft.Json;
 
 namespace MoveGameplays.Infrastructure
 {
-    public class MoveGameplaysSettingsService(IConfiguration configuration, MoveGameplaysConfigModel moveGameplayConfigs) : IMoveGameplaysSettignsService
+    public class MoveGameplaysSettingsService(MoveGameplaysConfigModel moveGameplayConfigs) : IMoveGameplaysSettignsService
     {
         public ChangeGameplaysSettingsDto GetConfigs()
             => new (ExternalHdName: moveGameplayConfigs.ExternalHdName,
                     FolderGameplaysHd: moveGameplayConfigs.FolderGameplaysHd,
-                    PathGameplaysPc: moveGameplayConfigs.PathGameplaysPc);
+                    PathGameplaysPc: moveGameplayConfigs.PathGameplaysPc,
+                    DeleteFiles: moveGameplayConfigs.DeleteFiles);
 
         public void UpdateConfigs(ChangeGameplaysSettingsDto model)
         {
-            try
-            {
-                var configurationRoot = configuration as IConfigurationRoot;
+            var configurationFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
 
-                // Especifique o caminho absoluto para o arquivo appsettings.json
-                var configurationFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
+            var appSettingsJson = File.ReadAllText(configurationFilePath);
 
-                var appSettingsJson = File.ReadAllText(configurationFilePath);
+            dynamic appSettingsObject = JsonConvert.DeserializeObject(appSettingsJson) ??
+                throw new Exception("Erro ao tentar alterar as configurações");
 
-                dynamic appSettingsObject = JsonConvert.DeserializeObject(appSettingsJson) ??
-                    throw new Exception("Erro ao tentar alterar as configurações");
+            appSettingsObject["MoveGameplaysConfig"]["ExternalHdName"] = model.ExternalHdName;
+            appSettingsObject["MoveGameplaysConfig"]["FolderGameplaysHd"] = model.FolderGameplaysHd;
+            appSettingsObject["MoveGameplaysConfig"]["PathGameplaysPc"] = model.PathGameplaysPc;
+            appSettingsObject["MoveGameplaysConfig"]["DeleteFiles"] = model.DeleteFiles;
 
-                appSettingsObject["MoveGameplaysConfig"]["ExternalHdName"] = model.ExternalHdName;
-                appSettingsObject["MoveGameplaysConfig"]["FolderGameplaysHd"] = model.FolderGameplaysHd;
-                appSettingsObject["MoveGameplaysConfig"]["PathGameplaysPc"] = model.PathGameplaysPc;
-
-                var updatedAppSettingsJson = JsonConvert.SerializeObject(appSettingsObject, Formatting.Indented);
-                File.WriteAllText(configurationFilePath, updatedAppSettingsJson);
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+            var updatedAppSettingsJson = JsonConvert.SerializeObject(appSettingsObject, Formatting.Indented);
+            File.WriteAllText(configurationFilePath, updatedAppSettingsJson);
         }
     }
 }

@@ -27,6 +27,7 @@ namespace MoveGameplays.Wfp.Views.Forms
             txt_hd_name.Text = configs.ExternalHdName;
             txt_folder_gameplays_hd.Text = configs.FolderGameplaysHd;
             txt_path_gameplays_pc.Text = configs.PathGameplaysPc;
+            checkBox_deleteFiles.Checked = configs.DeleteFiles;
         }
 
         private void Btn_back_Click(object sender, EventArgs e)
@@ -38,15 +39,23 @@ namespace MoveGameplays.Wfp.Views.Forms
 
         private void Btn_save_moveGameplays_configs_Click(object sender, EventArgs e)
         {
-            var newConfigs = new ChangeGameplaysSettingsDto(ExternalHdName: txt_hd_name.Text,
-                                                FolderGameplaysHd: txt_folder_gameplays_hd.Text,
-                                                PathGameplaysPc: txt_path_gameplays_pc.Text);
+            try
+            {
+                var newConfigs = new ChangeGameplaysSettingsDto(ExternalHdName: txt_hd_name.Text,
+                                                                FolderGameplaysHd: txt_folder_gameplays_hd.Text,
+                                                                PathGameplaysPc: txt_path_gameplays_pc.Text,
+                                                                DeleteFiles: checkBox_deleteFiles.Checked);
 
-            _moveGameplaysSettingsService.UpdateConfigs(newConfigs);
+                _moveGameplaysSettingsService.UpdateConfigs(newConfigs);
 
-            MessageBox.Show("Configurações alteradas com sucesso, a aplicação será reiniciada");
+                MessageBox.Show("Configurações alteradas com sucesso, a aplicação será reiniciada");
 
-            RestartApplication();
+                RestartApplication();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocorreu algum erro ao salvar as configurações: {ex.Message}");
+            }
         }
 
         private static void RestartApplication()

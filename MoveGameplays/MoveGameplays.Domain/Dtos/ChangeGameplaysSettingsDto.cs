@@ -3,6 +3,7 @@
     public record ChangeGameplaysSettingsDto(
         string ExternalHdName,
         string FolderGameplaysHd,
-        string PathGameplaysPc
+        string PathGameplaysPc,
+        bool DeleteFiles
     );
 }
