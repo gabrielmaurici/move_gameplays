@@ -9,8 +9,9 @@ Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar 
 
 Necessário que o sistema operacional seja Windows, devido as bibliotecas utilizadas com suporte apenas para Windows
 
-[Visual Studio 2022 - Comunity](https://visualstudio.microsoft.com/pt-br/vs/community/)
-[SDK .NET 8.0](https://dotnet.microsoft.com/pt-br/download/dotnet/8.0)
+*[Visual Studio 2022 - Comunity](https://visualstudio.microsoft.com/pt-br/vs/community/)
+
+*[SDK .NET 8.0](https://dotnet.microsoft.com/pt-br/download/dotnet/8.0)
 
 
 ### 🔧 Instalação
