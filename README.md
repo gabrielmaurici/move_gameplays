@@ -63,3 +63,19 @@ shell:startup
 
 Agora basta mover atalho .exe criado na pasta de publicação para a pasta Inicializar do Windows que a aplicação ira iniciar junto dos outros programas de inicialização
 ![movendo atalho para pasta de inicialização de programas windows](images/pasta-inicializar.png)
+
+## 💻 Como usar
+
+Ao iniciar a aplicação pela primeira vez, precisamos fazer a configuração inicial, para isso, basta clicar no botão "Configurações" no canto superior direito
+![tela inicial](images/tela-inicial.png)
+
+Adicione os campos de acordo com suas configurações, lembrando que não é necessário passar a unidade de disco no campo "Pasta Origem com as Gameplays", a própria aplicação irá detectar a unidade de disco ao observar a entrada de uma novo volume.
+
+O campo "Deletar arquivos" só ira deletar os arquivos após mover todas as imagens e as gameplays escolhidas, caso ocorra algum erro no processo, os arquivos serão mantidos no volume de origem.
+
+Após salvar as alterações a aplicação irá reiniciar e estará pronta para uso
+![tela configurações](images/tela-configs.png)
+
+Ao conectar o HD/Pen drive esperado será exibida a tela para que você escolha uma opção e também possa acompanhar o progresso
+![tela opções](images/tela-opcoes.png)
+![tela opções](images/tela-opcoes-progresso.png)
