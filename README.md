@@ -5,6 +5,14 @@ Aplicação automatizada para identificar input de um HD externo no windows, ver
 
 Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar o projeto.
 
+## 🛠️ Construído com
+
+* [Windows Forms](https://learn.microsoft.com/pt-br/dotnet/desktop/winforms/overview/?view=netdesktop-8.0) - Usado para criar interface de usuário para área de trabalho Windows
+* [ManagementEventWatcher](https://learn.microsoft.com/pt-br/dotnet/api/system.management.managementeventwatcher?view=dotnet-plat-ext-8.0) - Classe usada para monitorar eventos do Windows Management Instrumentation (WMI)
+* [Win32_VolumeChangeEvent](https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-volumechangeevent) - Evento WMI usado no parâmetro Query do ManagementEventWatcher para observar alterações de Volume no sistema operacional
+* [ManagementObjectSearcher](https://learn.microsoft.com/en-us/dotnet/api/system.management.managementobjectsearcher?view=dotnet-plat-ext-8.0) - Classe usada para realizar buscas do Windows Management Instrumentation (WMI)
+* [Win32_LogicalDisk](https://learn.microsoft.com/pt-br/windows/win32/cimwin32prov/win32-logicaldisk) - Classe WMI usado como parâmetro de consulta do ManagementObjectSeacher para obter unidade lógica inserida e verificar se o nome do unidade é igual a unidade (HD/Pen drive) esperado
+
 ### 📋 Pré-requisitos
 
 Necessário que o sistema operacional seja Windows, devido as bibliotecas utilizadas com suporte apenas para Windows
@@ -55,13 +63,3 @@ shell:startup
 
 Agora basta mover atalho para a pasta que a aplicação ira iniciar junto dos outros programas de inicialização do Windows
 ![movendo atalho para pasta de inicialização de programas windows](images/pasta-inicializar.png)
-
-
-
-## 🛠️ Construído com
-
-* [Windows Forms](https://learn.microsoft.com/pt-br/dotnet/desktop/winforms/overview/?view=netdesktop-8.0) - Usado para criar interface de usuário para área de trabalho Windows
-* [ManagementEventWatcher](https://learn.microsoft.com/pt-br/dotnet/api/system.management.managementeventwatcher?view=dotnet-plat-ext-8.0) - Classe usada para monitorar eventos do Windows Management Instrumentation (WMI)
-* [Win32_VolumeChangeEvent](https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-volumechangeevent) - Evento WMI usado no parâmetro Query do ManagementEventWatcher para observar alterações de Volume no sistema operacional
-* [ManagementObjectSearcher](https://learn.microsoft.com/en-us/dotnet/api/system.management.managementobjectsearcher?view=dotnet-plat-ext-8.0) - Classe usada para realizar buscas do Windows Management Instrumentation (WMI)
-* [Win32_LogicalDisk](https://learn.microsoft.com/pt-br/windows/win32/cimwin32prov/win32-logicaldisk) - Classe WMI usado como parâmetro de consulta do ManagementObjectSeacher para obter unidade lógica inserida e verificar se o nome do unidade é igual a unidade (HD/Pen drive) esperado
