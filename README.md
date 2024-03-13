@@ -11,7 +11,7 @@ Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar 
 * [ManagementEventWatcher](https://learn.microsoft.com/pt-br/dotnet/api/system.management.managementeventwatcher?view=dotnet-plat-ext-8.0) - Classe usada para monitorar eventos do Windows Management Instrumentation (WMI)
 * [Win32_VolumeChangeEvent](https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-volumechangeevent) - Evento WMI usado no parâmetro Query do ManagementEventWatcher para observar alterações de Volume no sistema operacional
 * [ManagementObjectSearcher](https://learn.microsoft.com/en-us/dotnet/api/system.management.managementobjectsearcher?view=dotnet-plat-ext-8.0) - Classe usada para realizar buscas do Windows Management Instrumentation (WMI)
-* [Win32_LogicalDisk](https://learn.microsoft.com/pt-br/windows/win32/cimwin32prov/win32-logicaldisk) - Classe WMI usado como parâmetro de consulta do ManagementObjectSeacher para obter unidade lógica inserida e verificar se o nome do unidade é igual a unidade (HD/Pen drive) esperado
+* [Win32_LogicalDisk](https://learn.microsoft.com/pt-br/windows/win32/cimwin32prov/win32-logicaldisk) - Classe WMI usado como parâmetro de consulta do ManagementObjectSeacher para obter unidade lógica inserida e verificar se o nome da unidade é igual a unidade (HD/Pen drive) esperado
 
 ### 📋 Pré-requisitos
 
@@ -61,5 +61,5 @@ shell:startup
 ```
 ![comando shell:startup](images/shell-startup.png)
 
-Agora basta mover atalho para a pasta que a aplicação ira iniciar junto dos outros programas de inicialização do Windows
+Agora basta mover atalho .exe criado na pasta de publicação para a pasta Inicializar do Windows que a aplicação ira iniciar junto dos outros programas de inicialização
 ![movendo atalho para pasta de inicialização de programas windows](images/pasta-inicializar.png)
