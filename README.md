@@ -13,7 +13,8 @@ Consulte **[Implantação](#implatação)** para saber como implantar o projeto.
 * [ManagementObjectSearcher](https://learn.microsoft.com/en-us/dotnet/api/system.management.managementobjectsearcher?view=dotnet-plat-ext-8.0) - Classe usada para realizar buscas do Windows Management Instrumentation (WMI)
 * [Win32_LogicalDisk](https://learn.microsoft.com/pt-br/windows/win32/cimwin32prov/win32-logicaldisk) - Classe WMI usado como parâmetro de consulta do ManagementObjectSeacher para obter unidade lógica inserida e verificar se o nome da unidade é igual a unidade (HD/Pen drive) esperado
 
-### 📋 Pré-requisitos
+
+## 📋 Pré-requisitos
 
 Necessário que o sistema operacional seja Windows, devido as bibliotecas utilizadas com suporte apenas para Windows
 
@@ -21,7 +22,7 @@ Necessário que o sistema operacional seja Windows, devido as bibliotecas utiliz
 * [SDK .NET 8.0](https://dotnet.microsoft.com/pt-br/download/dotnet/8.0)
 
 
-### 🔧 Instalação
+## 🔧 Instalação
 
 Restaure as dependências dos projetos na pasta /move_gameplays/MoveGameplays:
 
@@ -35,7 +36,8 @@ Rode o projeto na pasta onde se encontra o projeto Windows Forms /move_gameplays
 dotnet run
 ```
 
-### 📦 Implantação
+
+## 📦 Implantação
 
 Vamos inicar a implantação publicando o projeto Windows Forms em alguma pasta do seu computador, para isso basta clicar com o botão direito no projeto MoveGameplays.Wfp e clicar em publicar
 ![Publicar](images/publicar.png)
@@ -64,7 +66,8 @@ shell:startup
 Agora basta mover atalho .exe criado na pasta de publicação para a pasta Inicializar do Windows que a aplicação ira iniciar junto dos outros programas de inicialização
 ![movendo atalho para pasta de inicialização de programas windows](images/pasta-inicializar.png)
 
-### 💻 Como usar
+
+## 💻 Como usar
 
 Ao iniciar a aplicação pela primeira vez, precisamos fazer a configuração inicial, para isso, basta clicar no botão "Configurações" no canto superior direito
 ![tela inicial](images/tela-inicial.png)
