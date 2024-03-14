@@ -3,7 +3,11 @@
 Aplicação automatizada para identificar input de um HD externo no windows, verificar se o HD conectado é o mesmo que foi configurado na aplicação, mover todas as fotos e as gameplays para o computador (com opções de mover a última gameplay ou as últimas 10) e deletar os arquivos do HD Externo
 
 
-Consulte **[Implantação](#implatação)** para saber como implantar o projeto.
+* [Construído com](#Construído-com)
+* [Pré-requisitos](#Pré-requisitos)
+* [Instalação](#Instalação)
+* [como usar](#Como-usar)
+
 
 ## 🛠️ Construído com
 
