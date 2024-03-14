@@ -3,7 +3,7 @@
 Aplicação automatizada para identificar input de um HD externo no windows, verificar se o HD conectado é o mesmo que foi configurado na aplicação, mover todas as fotos e as gameplays para o computador (com opções de mover a última gameplay ou as últimas 10) e deletar os arquivos do HD Externo
 
 
-Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar o projeto.
+Consulte **[Implantação](#implatação)** para saber como implantar o projeto.
 
 ## 🛠️ Construído com
 
@@ -35,7 +35,7 @@ Rode o projeto na pasta onde se encontra o projeto Windows Forms /move_gameplays
 dotnet run
 ```
 
-## 📦 Implantaçãos
+### 📦 Implantação
 
 Vamos inicar a implantação publicando o projeto Windows Forms em alguma pasta do seu computador, para isso basta clicar com o botão direito no projeto MoveGameplays.Wfp e clicar em publicar
 ![Publicar](images/publicar.png)
@@ -64,7 +64,7 @@ shell:startup
 Agora basta mover atalho .exe criado na pasta de publicação para a pasta Inicializar do Windows que a aplicação ira iniciar junto dos outros programas de inicialização
 ![movendo atalho para pasta de inicialização de programas windows](images/pasta-inicializar.png)
 
-## 💻 Como usar
+### 💻 Como usar
 
 Ao iniciar a aplicação pela primeira vez, precisamos fazer a configuração inicial, para isso, basta clicar no botão "Configurações" no canto superior direito
 ![tela inicial](images/tela-inicial.png)
