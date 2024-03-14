@@ -1,20 +1,6 @@
-# MoveGameplays
+## MoveGameplays
 
 Aplicação automatizada para identificar input de um HD externo no windows, verificar se o HD conectado é o mesmo que foi configurado na aplicação, mover todas as fotos e as gameplays para o computador (com opções de mover a última gameplay ou as últimas 10) e deletar os arquivos do HD Externo
-
-
- <a href="#construido-com">Objetivo</a> •
- <a href="#roadmap">Roadmap</a> • 
- <a href="#tecnologias">Tecnologias</a> • 
- <a href="#contribuicao">Contribuição</a> • 
- <a href="#licenc-a">Licença</a> • 
- <a href="#autor">Autor</a>
-
-* [Construído com](#construido-com)
-* [Pré-requisitos](#pre-requisitos)
-* [Instalação](#instalacao)
-* [Implantação](#implantacao)
-* [Como usar](#como-usar)
 
 
 ## 🛠️ Construído com
